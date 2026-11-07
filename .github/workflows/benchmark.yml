@@ -1,0 +1,54 @@
+name: Reproducible benchmark
+on:
+  workflow_dispatch:
+    inputs:
+      rate:
+        description: Offered create commands per second (max 1200)
+        default: '100'
+        required: true
+      seconds:
+        description: Workload duration in seconds (max 120)
+        default: '15'
+        required: true
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate bounded workload and record environment
+        env:
+          RATE: ${{ inputs.rate }}
+          SECONDS_REQUESTED: ${{ inputs.seconds }}
+        run: |
+          python3 -c 'import os; assert 1<=int(os.environ["RATE"])<=1200; assert 1<=int(os.environ["SECONDS_REQUESTED"])<=120'
+          mkdir -p evidence
+          git rev-parse HEAD > evidence/commit.txt
+          lscpu > evidence/cpu.txt
+          free -h > evidence/memory.txt
+          df -h > evidence/disk.txt
+          docker version > evidence/docker.txt
+      - run: docker compose up -d --build
+      - run: python3 scripts/smoke.py > evidence/smoke.json
+      - name: Measure acceptance workload
+        env:
+          RATE: ${{ inputs.rate }}
+          DURATION: ${{ inputs.seconds }}s
+        run: |
+          docker run --rm --network host --user "$(id -u):$(id -g)" -v "$PWD:/work" -w /work/evidence -e RATE -e DURATION -e RUN_ID="ci-${{ github.run_id }}" grafana/k6:0.57.0 run /work/benchmarks/load.js
+      - name: Observe recovery
+        if: always()
+        run: python3 benchmarks/recovery.py > evidence/recovery.json
+      - name: Record final status and logs
+        if: always()
+        run: |
+          curl -sf -u operator:local-operator-password http://localhost:8080/ops/status > evidence/status.json || true
+          docker stats --no-stream > evidence/containers.txt
+          docker compose logs --no-color > evidence/compose.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: benchmark-evidence
+          path: evidence/
+      - run: docker compose down
+        if: always()

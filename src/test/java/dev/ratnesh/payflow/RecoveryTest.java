@@ -37,4 +37,13 @@ class RecoveryTest {
   UUID payment=captured();String body=p.encode(Map.of("eventId",UUID.randomUUID(),"operationId",payment,"status","FAILED"));String ts=Long.toString(java.time.Instant.now().getEpochSecond());hooks.incoming(ts,hooks.sign(ts,body),body);hooks.incoming(ts,hooks.sign(ts,body),body);assertEquals("SUCCEEDED",p.get("merchant-demo",payment).get("state"));assertThrows(Exception.class,()->hooks.incoming(ts,"invalid",body));
  }
  @Test void merchantIsolation()throws Exception{UUID payment=captured();assertThrows(Exception.class,()->p.get("other-merchant",payment));assertThrows(Exception.class,()->p.refund("other-merchant",payment,"k",10));}
+ @Test void failedWebhookRetriesWithoutRepostingLedger()throws Exception{
+  UUID payment=captured();String body=p.db.queryForObject("SELECT payload FROM outbox WHERE payment_id=?",String.class,payment);hooks.consume(body);UUID event=UUID.fromString(p.json.readTree(body).path("eventId").asText());
+  var code=new java.util.concurrent.atomic.AtomicInteger(503);var server=com.sun.net.httpserver.HttpServer.create(new java.net.InetSocketAddress("127.0.0.1",0),0);server.createContext("/hook",exchange->{exchange.getRequestBody().readAllBytes();exchange.sendResponseHeaders(code.get(),-1);exchange.close();});server.start();
+  try{var delivery=new Webhooks(p,"test-secret","http://127.0.0.1:"+server.getAddress().getPort()+"/hook",true);delivery.deliver();assertFalse(p.db.queryForObject("SELECT delivered FROM webhook_delivery WHERE event_id=?",Boolean.class,event));p.db.update("UPDATE webhook_delivery SET next_attempt=now() WHERE event_id=?",event);code.set(200);delivery.deliver();assertTrue(p.db.queryForObject("SELECT delivered FROM webhook_delivery WHERE event_id=?",Boolean.class,event));assertEquals(1,p.db.queryForObject("SELECT count(*) FROM journal WHERE business_id=?",Integer.class,payment));}finally{server.stop(0);}
+ }
+ @Test void entryCannotBeAppendedToAnAlreadyCommittedJournal()throws Exception{
+  UUID payment=captured();UUID journal=p.db.queryForObject("SELECT id FROM journal WHERE business_id=?",UUID.class,payment);
+  assertThrows(Exception.class,()->p.tx.executeWithoutResult(s->p.db.update("INSERT INTO ledger_entry VALUES (?,'extra-debit','DEBIT',10),(?,'extra-credit','CREDIT',10)",journal,journal)));
+ }
 }
