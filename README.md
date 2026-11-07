@@ -65,6 +65,8 @@ The simulator currently succeeds every accepted operation, except an operator-co
 
 See [SRS and build guide](docs/SRS.md) for the larger design and [implementation/evidence map](docs/CLAIMS.md) for the implemented scope. The SRS includes future extensions; it is not an assertion that every proposed extension exists.
 
+The [OpenAPI contract](docs/openapi.yml) documents request/response and authentication boundaries. [Executed validation](docs/VALIDATION.md) links passing CI runs and preserves both failed and improved performance experiments.
+
 ## Tests
 
 ```sh

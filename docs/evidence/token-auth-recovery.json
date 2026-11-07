@@ -1,0 +1,8 @@
+{
+  "scenario": "single accepted command, SIGKILL app, compose restart",
+  "paymentId": "720d4ac1-2416-419d-b096-035132b76e1d",
+  "apiReadySeconds": 6.857273680999981,
+  "observedSuccessSeconds": 7.049907143999974,
+  "under3Seconds": false,
+  "limitation": "command may have completed before kill; this is availability observation, not proof of interrupted-command recovery"
+}

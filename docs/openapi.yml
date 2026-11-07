@@ -1,0 +1,154 @@
+openapi: 3.0.3
+info:
+  title: PayFlow local payment simulator
+  version: 1.0.0
+  description: Durable asynchronous payment commands. 202 is acceptance, not provider completion. No real funds are processed.
+servers:
+  - url: http://localhost:8080
+security:
+  - bearer: []
+  - basic: []
+paths:
+  /auth/token:
+    post:
+      summary: Exchange Basic credentials for a 15-minute JWT
+      security: [{basic: []}]
+      responses:
+        '200':
+          description: Token with access_token, token_type, expires_in
+        '401': {description: Invalid credentials}
+        '403': {description: A bearer token cannot renew itself}
+  /v1/payments:
+    post:
+      summary: Accept an idempotent capture command
+      parameters:
+        - $ref: '#/components/parameters/IdempotencyKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [amount, currency]
+              properties:
+                amount: {type: integer, format: int64, minimum: 1, maximum: 1000000000000}
+                currency: {type: string, enum: [INR, USD, EUR]}
+      responses:
+        '202': {$ref: '#/components/responses/Accepted'}
+        '400': {description: Invalid amount, currency, or key}
+        '409': {description: Idempotency key reused with different request}
+        '429': {description: Merchant admission limit exceeded}
+        '503': {description: Redis unavailable or database busy; retry same key}
+  /v1/payments/{id}:
+    get:
+      summary: Read an owned payment and its captured/refunded/reserved totals
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: Payment snapshot
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id: {type: string, format: uuid}
+                  state: {type: string, enum: [CREATED, PROCESSING, UNKNOWN, SUCCEEDED, FAILED]}
+                  amount: {type: integer, format: int64}
+                  refunded: {type: integer, format: int64}
+                  reserved: {type: integer, format: int64}
+                  currency: {type: string}
+        '404': {description: Unknown payment or another merchant's resource}
+  /v1/payments/{id}/refunds:
+    post:
+      summary: Reserve refundable amount and accept a refund command
+      parameters:
+        - $ref: '#/components/parameters/Id'
+        - $ref: '#/components/parameters/IdempotencyKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [amount]
+              properties:
+                amount: {type: integer, format: int64, minimum: 1, maximum: 1000000000000}
+      responses:
+        '202': {$ref: '#/components/responses/Accepted'}
+        '404': {description: Unknown or inaccessible payment}
+        '409': {description: Excess refund, incomplete capture, or conflicting idempotency key}
+        '429': {description: Admission limit exceeded}
+        '503': {description: Retryable dependency failure}
+  /v1/refunds/{id}:
+    get:
+      summary: Read an owned refund
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '200': {description: Refund with id, payment_id, amount, and PENDING/UNKNOWN/SUCCEEDED/FAILED state}
+        '404': {description: Unknown or inaccessible refund}
+  /v1/ledger:
+    get:
+      summary: Read the most recent 200 owned ledger entries
+      responses:
+        '200': {description: Journal and entry fields; no mutation endpoint exists}
+  /ops/status:
+    get:
+      summary: Operator-only queue and ledger invariant snapshot
+      responses:
+        '200': {description: pendingOperations, unpublishedEvents, pendingWebhooks, unbalancedJournals}
+        '403': {description: Operator role required}
+  /ops/simulator/lose-next-response:
+    post:
+      summary: Operator-only one-shot response-loss fault after provider commit
+      responses:
+        '200': {description: Fault armed in this process}
+        '403': {description: Operator role required}
+  /provider/webhook:
+    post:
+      summary: Verify and persist a callback hint for authoritative reconciliation
+      security: []
+      parameters:
+        - {in: header, name: X-Timestamp, required: true, schema: {type: string}, description: Unix seconds within 300 seconds of server time}
+        - {in: header, name: X-Signature, required: true, schema: {type: string}, description: Lowercase hex HMAC-SHA256 of timestamp + '.' + exact raw body}
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [eventId, operationId]
+              properties:
+                eventId: {type: string, format: uuid}
+                operationId: {type: string, format: uuid}
+      responses:
+        '200': {description: Inbox committed; repeated identical event acknowledged}
+        '401': {description: Invalid signature or stale timestamp}
+        '409': {description: Event ID reused with changed raw body}
+components:
+  securitySchemes:
+    basic: {type: http, scheme: basic}
+    bearer: {type: http, scheme: bearer, bearerFormat: JWT}
+  parameters:
+    Id:
+      in: path
+      name: id
+      required: true
+      schema: {type: string, format: uuid}
+    IdempotencyKey:
+      in: header
+      name: Idempotency-Key
+      required: true
+      schema: {type: string, minLength: 1, maxLength: 128}
+  responses:
+    Accepted:
+      description: Durable command committed; replay returns the same ID and original ACCEPTED response
+      content:
+        application/json:
+          schema:
+            type: object
+            required: [id, status]
+            properties:
+              id: {type: string, format: uuid}
+              status: {type: string, enum: [ACCEPTED]}
