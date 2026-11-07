@@ -1,0 +1,49 @@
+spring:
+  task:
+    scheduling:
+      pool:
+        size: 4
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/payflow}
+    username: ${DB_USER:payflow}
+    password: ${DB_PASSWORD:local-development-only}
+    hikari:
+      maximum-pool-size: 10
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP:localhost:9092}
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      acks: all
+      properties:
+        enable.idempotence: true
+        delivery.timeout.ms: 10000
+        request.timeout.ms: 5000
+        max.block.ms: 5000
+    consumer:
+      group-id: payflow-webhooks-v1
+      auto-offset-reset: earliest
+      enable-auto-commit: false
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    listener:
+      ack-mode: record
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      timeout: 500ms
+payflow:
+  workers: ${WORKERS_ENABLED:true}
+  rate-limit: ${RATE_LIMIT:2000}
+  merchant-password: ${MERCHANT_PASSWORD:local-merchant-password}
+  operator-password: ${OPERATOR_PASSWORD:local-operator-password}
+  webhook-secret: ${WEBHOOK_SECRET:local-webhook-secret-change-me}
+  webhook-url: ${WEBHOOK_URL:http://localhost:8080/simulator/merchant-webhook}
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,metrics
+server:
+  error:
+    include-message: never

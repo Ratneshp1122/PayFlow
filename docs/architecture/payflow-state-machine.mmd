@@ -1,0 +1,18 @@
+stateDiagram-v2
+  [*] --> CREATED: command commit
+  CREATED --> PROCESSING: durable worker claim
+  PROCESSING --> SUCCEEDED: authoritative success and journal commit
+  PROCESSING --> FAILED: definitive no-capture failure
+  PROCESSING --> UNKNOWN: timeout or uncertain response
+  UNKNOWN --> SUCCEEDED: reconciled success and journal commit
+  UNKNOWN --> FAILED: reconciled definitive failure
+  SUCCEEDED --> [*]
+  FAILED --> [*]
+  note right of UNKNOWN
+    Retain provider key
+    Do not create a new capture
+  end note
+  note right of SUCCEEDED
+    Refunds are separate resources
+    Contradictions create incidents
+  end note

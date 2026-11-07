@@ -1,0 +1,12 @@
+sequenceDiagram
+  participant A as Refund request A
+  participant B as Refund request B
+  participant D as PostgreSQL
+  A->>D: Begin; idempotency key; lock payment
+  B->>D: Begin; different key; wait for same payment lock
+  A->>D: Reserve 20000 from 25000 available
+  A->>D: Insert refund and operation and outbox; commit
+  D-->>B: Acquire payment lock; see 5000 available
+  B->>D: Reject 20000 request; rollback
+  Note over A,D: UNKNOWN keeps reservation
+  Note over A,D: Success atomically moves reserved to refunded and posts journal

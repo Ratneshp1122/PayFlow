@@ -1,0 +1,6 @@
+target/
+.env
+*.log
+benchmarks/results/*
+!benchmarks/results/.gitkeep
+.idea/

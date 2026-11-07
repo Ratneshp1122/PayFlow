@@ -1,0 +1,23 @@
+erDiagram
+  MERCHANT ||--o{ PAYMENT : owns
+  PAYMENT ||--o{ REFUND : reserves
+  PAYMENT ||--o{ PROVIDER_OPERATION : coordinates
+  PAYMENT ||--o{ OUTBOX_EVENT : announces
+  REFUND ||--o{ PROVIDER_OPERATION : coordinates
+  LEDGER_TRANSACTION ||--|{ LEDGER_ENTRY : contains
+  LEDGER_ACCOUNT ||--o{ LEDGER_ENTRY : records
+  PAYMENT ||--o{ LEDGER_TRANSACTION : capture_reference
+  REFUND ||--o{ LEDGER_TRANSACTION : refund_reference
+  MERCHANT ||--o{ IDEMPOTENCY_RECORD : scopes
+  OUTBOX_EVENT ||--o{ CONSUMER_RECEIPT : deduplicates
+  OUTBOX_EVENT ||--o{ WEBHOOK_DELIVERY : notifies
+  PAYMENT {
+    uuid payment_id PK
+    uuid merchant_id FK
+    bigint amount_minor
+    bigint reserved_amount
+    bigint refunded_amount
+    string currency
+    string state
+    bigint version
+  }

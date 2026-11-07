@@ -1,0 +1,20 @@
+sequenceDiagram
+  participant M as Merchant
+  participant A as API
+  participant D as PostgreSQL
+  participant W as Worker
+  participant P as Provider simulator
+  M->>A: POST payment with idempotency key
+  A->>D: Begin; key, payment, operation, outbox, response
+  D-->>A: Commit
+  A-->>M: 202 with stable resource ID
+  W->>D: Claim operation with lease and fencing token
+  D-->>W: Claim committed
+  W->>P: Capture with stable provider key
+  P->>P: Persist successful capture
+  Note over P,W: Response may be lost
+  W->>D: Mark UNKNOWN if timeout
+  W->>P: Query or retry same operation key
+  P-->>W: Authoritative capture success
+  W->>D: Begin; verify lease; state and balanced ledger and outbox
+  D-->>W: Commit once by business reference

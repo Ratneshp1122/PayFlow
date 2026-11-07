@@ -1,0 +1,16 @@
+flowchart LR
+  M[Merchant] --> A[Authenticated API]
+  A -->|short transaction| DB[(Payments, ledger, operations, outbox)]
+  DB --> R[Outbox relay]
+  R --> K[Kafka lifecycle events]
+  K --> C[Idempotent consumers]
+  C --> DB
+  DB --> W[Leased operation workers]
+  W -->|stable provider key| P[Durable provider simulator]
+  P --> H[Verified webhook inbox]
+  H --> DB
+  DB --> RC[Reconciliation]
+  RC --> P
+  DB --> N[Notification worker]
+  N --> MH[Merchant webhook endpoint]
+  RD[(Optional Redis limiter)] -. admission only .-> A
