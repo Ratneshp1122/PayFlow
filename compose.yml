@@ -43,6 +43,7 @@ services:
       MERCHANT_PASSWORD: ${MERCHANT_PASSWORD:-local-merchant-password}
       OPERATOR_PASSWORD: ${OPERATOR_PASSWORD:-local-operator-password}
       WEBHOOK_SECRET: ${WEBHOOK_SECRET:-local-webhook-secret-change-me}
+      JWT_SECRET: ${JWT_SECRET:-local-only-signing-secret-at-least-32-bytes-change-before-sharing}
       RATE_LIMIT: ${RATE_LIMIT:-2000}
     depends_on:
       postgres: {condition: service_healthy}

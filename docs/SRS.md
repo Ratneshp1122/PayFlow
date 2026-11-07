@@ -8,7 +8,7 @@ Version 1.0 | 7 November 2026 | Prepared for Ratnesh P
 
 PayFlow is a payment-orchestration simulator that accepts payment and refund commands, coordinates an external provider simulator, records an append-only double-entry ledger, and delivers merchant notifications. It is designed to remain correct when clients retry, callbacks arrive twice or out of order, and workers fail at awkward moments.
 
-This document is a proposed build specification for your project. It does not certify that the implementation or resume benchmarks have been reproduced. The accessible PayFlow default-branch README currently contains only the project title; implementation details here should be mapped to any existing local work before development. The 1,200 RPS, p99 below 35 ms, and recovery below three seconds are benchmark hypotheses with explicitly different measurement boundaries.
+This document specifies the broader target design. The repository README and CLAIMS.md describe the implemented subset, and VALIDATION.md links executed tests and benchmark evidence. The 1,200 RPS, p99 below 35 ms, and recovery below three seconds are benchmark hypotheses with explicitly different measurement boundaries. Proposed multi-provider and distributed deployment extensions below are roadmap items, not assertions of current implementation.
 
 ### Scope
 

@@ -1,9 +1,11 @@
 """End-to-end Compose smoke test: HTTP, RBAC, Redis, DB worker, Kafka, webhook delivery."""
 import base64, json, time, uuid, urllib.request, urllib.error, os
 BASE=os.environ.get('BASE_URL','http://localhost:8080')
+TOKEN=None
 def request(method,path,body=None,key=None,user='merchant-demo'):
     password=os.environ.get('OPERATOR_PASSWORD','local-operator-password') if user=='operator' else os.environ.get('MERCHANT_PASSWORD','local-merchant-password')
     headers={'Content-Type':'application/json','Authorization':'Basic '+base64.b64encode(f'{user}:{password}'.encode()).decode()}
+    if TOKEN and user=='merchant-demo':headers['Authorization']='Bearer '+TOKEN
     if key: headers['Idempotency-Key']=key
     req=urllib.request.Request(BASE+path,data=json.dumps(body).encode() if body is not None else None,headers=headers,method=method)
     try:
@@ -19,6 +21,10 @@ def wait(predicate,seconds=90):
         time.sleep(.2)
     raise AssertionError('condition did not become true')
 wait(lambda:request('GET','/ops/status',user='operator')[0]==200)
+code,token=request('POST','/auth/token',{})
+assert code==200
+TOKEN=token['access_token']
+assert request('POST','/auth/token',{})[0]==403  # Bearer tokens cannot refresh themselves.
 assert request('GET','/ops/status')[0]==403
 assert request('POST','/ops/simulator/lose-next-response',{},user='operator')[0]==200
 key=str(uuid.uuid4());body={'amount':25000,'currency':'INR'}

@@ -26,7 +26,9 @@ docker compose down
 
 The API binds to `127.0.0.1:8080`. PostgreSQL binds to `127.0.0.1:5432`. Named volumes retain the database and Kafka log across restarts; `down` does not erase them. First startup may take a minute while Kafka initializes.
 
-Development credentials: merchant `merchant-demo` / `local-merchant-password`, operator `operator` / `local-operator-password`. Set `MERCHANT_PASSWORD`, `OPERATOR_PASSWORD`, `DB_PASSWORD`, and `WEBHOOK_SECRET` in a local `.env` before any shared deployment. TLS, managed identities, secret management, hardened database roles, and production payment-provider integration are outside this local demonstration.
+Development credentials: merchant `merchant-demo` / `local-merchant-password`, operator `operator` / `local-operator-password`. Set `MERCHANT_PASSWORD`, `OPERATOR_PASSWORD`, `DB_PASSWORD`, `JWT_SECRET` (at least 32 bytes), and `WEBHOOK_SECRET` in a local `.env` before any shared deployment. TLS, managed identities, secret management, hardened database roles, and production payment-provider integration are outside this local demonstration.
+
+For repeated requests, exchange HTTP Basic credentials at `POST /auth/token` for a 15-minute signed JWT, then send `Authorization: Bearer TOKEN`. Signature, issuer, expiry, roles, and resource ownership are checked. A bearer token cannot mint a replacement token. Basic authentication remains available for manual examples below. The benchmark uses token authentication; password-hash verification happens once in setup.
 
 ```sh
 curl -u merchant-demo:local-merchant-password -H 'Content-Type: application/json' \
@@ -84,7 +86,7 @@ k6 run -e RATE=100 -e DURATION=60s -e RUN_ID=baseline benchmarks/load.js
 k6 run -e RATE=1200 -e DURATION=60s -e RUN_ID=target benchmarks/load.js
 ```
 
-`summary.json` includes all HTTP responses and dropped iterations. Preserve it under a unique run directory together with the git SHA, CPU/RAM/disk, Docker limits, workload duration, `/ops/status` snapshots, and `docker stats`. The 35ms threshold deliberately fails if unmet. HTTP Basic password verification is part of this workload. Measure queue depth during the run and time to drain after it; the serial provider worker and database round trips are likely bottlenecks long before a headline RPS target. Do not weaken durability or disable authentication just to improve a number.
+`summary.json` includes all HTTP responses, p99, and dropped iterations. Preserve it under a unique run directory together with the git SHA, CPU/RAM/disk, Docker limits, workload duration, `/ops/status` snapshots, and `docker stats`. The 35ms threshold deliberately fails if unmet. The payment latency distribution includes bearer-token verification; the separately tagged token exchange includes password verification. Measure queue depth during the run and time to drain after it; the serial provider worker and database round trips are likely bottlenecks long before a headline RPS target. Do not weaken durability or disable authentication just to improve a number.
 
 Use `python benchmarks/recovery.py` for a scoped application-process failure trial. It records observed recovery, rather than forcing a passing result.
 

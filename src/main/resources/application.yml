@@ -33,6 +33,7 @@ spring:
       host: ${REDIS_HOST:localhost}
       timeout: 500ms
 payflow:
+  jwt-secret: ${JWT_SECRET:local-only-signing-secret-at-least-32-bytes-change-before-sharing}
   workers: ${WORKERS_ENABLED:true}
   rate-limit: ${RATE_LIMIT:2000}
   merchant-password: ${MERCHANT_PASSWORD:local-merchant-password}
