@@ -82,7 +82,7 @@ PF-N06 maintainability: domain logic is independent of Kafka and HTTP. All datab
 
 ## 4 Architecture and runtime profiles
 
-[[ARCHITECTURE]]
+See the [component diagram](architecture/payflow-containers.mmd), [capture sequence](architecture/payflow-capture-sequence.mmd), and [refund sequence](architecture/payflow-refund-sequence.mmd). These diagrams describe the broader target design; the repository README documents the implemented runtime.
 
 Start as a modular monolith with background workers. Modules share one PostgreSQL database and explicit transaction boundaries. Kafka decouples delivery but does not make the database and provider one atomic system. Redis is an optional admission-control service. A provider simulator models failures without real transactions.
 

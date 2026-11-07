@@ -79,7 +79,7 @@ CI runs all three. Recovery tests cover retries, payload conflicts, provider res
 
 ## Benchmarks: targets, not claimed results
 
-**1,200 RPS, p99 <35ms, and recovery <3s are unverified targets.** This repository does not assert they were measured. Do not equate HTTP acceptance with payment completion or process restart with full backlog recovery.
+**The combined 1,200-RPS / p99 <35ms / recovery <3s target has not been achieved.** A short 100-RPS JWT-authenticated CI run measured 28.43ms payment-acceptance p99 with no dropped iterations. The 1,200-RPS trials and restart-recovery target failed; see [all measured results](docs/VALIDATION.md). Do not equate HTTP acceptance with payment completion or process restart with full backlog recovery.
 
 With k6 installed:
 
@@ -97,5 +97,5 @@ Use `python benchmarks/recovery.py` for a scoped application-process failure tri
 1. Measure API authentication, pool wait, SQL time, and provider/ledger completion separately.
 2. Profile operation polling and transaction round trips; introduce bounded worker concurrency while retaining locks, tokens, and stable provider IDs.
 3. Batch outbox publication without marking events published before Kafka acknowledges.
-4. Tune pools against measured database capacity; extra threads cannot create disk throughput.
+4. Tune pools against measured database capacity; extra threads cannot create disk throughput. The default `DB_POOL_SIZE=10` was retained after a 24-connection trial made the target-rate results worse.
 5. Consider CDC and horizontally partitioned workers only after the correctness tests pass on the changed implementation.

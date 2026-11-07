@@ -47,3 +47,16 @@ The authentication configurations differ, so the comparison demonstrates removal
 - Final snapshot: 13 pending provider operations, 0 unpublished events, 13,189 pending webhooks, and 0 unbalanced journals. Full end-to-end recovery had not completed.
 
 This trial explicitly does not support the requested 1,200-RPS/<35ms/<3s claim. Raw evidence is in `evidence/token-auth-1200rps-pool10.json` and the matching recovery file. The next experiment raises the configurable connection pool from 10 to 24 while retaining the same workload and correctness checks; it does not assume that more connections will improve performance.
+
+## Pool-size experiment and final default
+
+The 24-connection experiment at `ae3f0e8` passed [all correctness tests](https://github.com/Ratneshp1122/PayFlow/actions/runs/42374342767), but [benchmark run 42374347556](https://github.com/Ratneshp1122/PayFlow/actions/runs/42374347556) was worse:
+
+- 11,719 create requests plus one token exchange; k6's total HTTP rate was 736.96/sec.
+- 6,282 scheduled iterations were dropped; payment p99 was 2,355.05ms.
+- API restart availability was 7.45 seconds; observed payment success was 72.19 seconds.
+- The final snapshot still had 9,409 pending webhooks and 7 unpublished events, with no unbalanced journals.
+
+The default was therefore restored to **10 connections**. `DB_POOL_SIZE` remains configurable for deliberate experiments. GitHub runners are not identical controlled hardware, and one run per configuration is insufficient for a universal causal claim; the larger pool did not justify changing the default on the available evidence. Raw results: `evidence/token-auth-1200rps-pool24.json` and matching recovery file.
+
+The next useful work is profiling database waits, app CPU/JIT, and asynchronous worker throughput under a warmed workload, followed by repeated controlled experiments. None of these runs establishes the requested combined performance claim.
