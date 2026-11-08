@@ -1,4 +1,6 @@
 spring:
+  main:
+    lazy-initialization: ${LAZY_INIT:false}
   task:
     scheduling:
       pool:
@@ -33,6 +35,7 @@ spring:
       host: ${REDIS_HOST:localhost}
       timeout: 500ms
 payflow:
+  profiling: ${PROFILE_ENABLED:false}
   jwt-secret: ${JWT_SECRET:local-only-signing-secret-at-least-32-bytes-change-before-sharing}
   workers: ${WORKERS_ENABLED:true}
   rate-limit: ${RATE_LIMIT:2000}
@@ -44,7 +47,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: health,metrics
+        include: health,metrics,prometheus
 server:
   error:
     include-message: never
