@@ -49,6 +49,7 @@ services:
       WORKER_CONCURRENCY: ${WORKER_CONCURRENCY:-4}
       WEBHOOK_CONCURRENCY: ${WEBHOOK_CONCURRENCY:-4}
       OUTBOX_BATCH_SIZE: ${OUTBOX_BATCH_SIZE:-128}
+      LAZY_INIT: ${LAZY_INIT:-false}
     depends_on:
       postgres: {condition: service_healthy}
       kafka: {condition: service_started}

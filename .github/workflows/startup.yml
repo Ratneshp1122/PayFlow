@@ -1,0 +1,44 @@
+name: Three-run startup comparison
+on: {workflow_dispatch: {}}
+permissions: {contents: read}
+jobs:
+  measure:
+    strategy:
+      fail-fast: false
+      matrix: {variant: [baseline, lazy, cds]}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      VARIANT: '${{ matrix.variant }}'
+      LAZY_INIT: '${{ matrix.variant == ''lazy'' && ''true'' || ''false'' }}'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and validate runtime
+        run: |
+          if [ "$VARIANT" = cds ]; then docker compose -f compose.yml -f compose.cds.yml up -d --build; else docker compose up -d --build; fi
+          python3 scripts/smoke.py
+      - run: python3 benchmarks/startup.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: {name: '${{ matrix.variant }}-startup', path: evidence/}
+      - run: docker compose down
+        if: always()
+  archive:
+    needs: measure
+    if: always()
+    runs-on: ubuntu-latest
+    permissions: {contents: write, actions: read}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with: {path: 'benchmarks/runs/${{ github.run_id }}'}
+      - name: Preserve startup trials
+        env: {RUN_ID: '${{ github.run_id }}'}
+        run: |
+          echo '# Startup comparison: inspect each variant README and raw results' > "benchmarks/runs/$RUN_ID/README.md"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f benchmarks/runs
+          git commit -m "Record startup comparison $RUN_ID [skip ci]"
+          for attempt in 1 2 3; do git pull --rebase origin main && git push && exit 0; sleep 2; done
+          exit 1
