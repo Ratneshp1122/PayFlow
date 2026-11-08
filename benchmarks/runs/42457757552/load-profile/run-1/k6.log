@@ -1,0 +1,82 @@
+Unable to find image 'grafana/k6:0.57.0' locally
+0.57.0: Pulling from grafana/k6
+66a3d608f3fa: Pulling fs layer
+f073781953be: Pulling fs layer
+f860ff442d92: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+4f4fb700ef54: Waiting
+f073781953be: Verifying Checksum
+f073781953be: Download complete
+66a3d608f3fa: Download complete
+66a3d608f3fa: Pull complete
+4f4fb700ef54: Verifying Checksum
+4f4fb700ef54: Download complete
+f860ff442d92: Verifying Checksum
+f073781953be: Pull complete
+f860ff442d92: Pull complete
+4f4fb700ef54: Pull complete
+Digest: sha256:70af91f86cd8e142e0544a4edaf79835a80033f71974b92edd5ac36fd4442a7b
+Status: Downloaded newer image for grafana/k6:0.57.0
+
+         /\      Grafana   /‾‾/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ‾‾\ 
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/ 
+
+     execution: local
+        script: /work/benchmarks/load.js
+        output: -
+
+     scenarios: (100.00%) 1 scenario, 1000 max VUs, 45s max duration (incl. graceful stop):
+              * create: 300.00 iterations/s for 15s (maxVUs: 100-1000, gracefulStop: 30s)
+
+
+running (01.0s), 0064/0100 VUs, 233 complete and 0 interrupted iterations
+create   [   7% ] 0064/0100 VUs  01.0s/15s  300.00 iters/s
+
+running (02.0s), 0040/0110 VUs, 547 complete and 0 interrupted iterations
+create   [  13% ] 0040/0110 VUs  02.0s/15s  300.00 iters/s
+
+running (03.0s), 0031/0110 VUs, 856 complete and 0 interrupted iterations
+create   [  20% ] 0031/0110 VUs  03.0s/15s  300.00 iters/s
+
+running (04.0s), 0057/0110 VUs, 1130 complete and 0 interrupted iterations
+create   [  27% ] 0057/0110 VUs  04.0s/15s  300.00 iters/s
+
+running (05.0s), 0071/0110 VUs, 1416 complete and 0 interrupted iterations
+create   [  33% ] 0071/0110 VUs  05.0s/15s  300.00 iters/s
+
+running (06.0s), 0122/0127 VUs, 1648 complete and 0 interrupted iterations
+create   [  40% ] 0122/0127 VUs  06.0s/15s  300.00 iters/s
+
+running (07.0s), 0085/0127 VUs, 1985 complete and 0 interrupted iterations
+create   [  47% ] 0085/0127 VUs  07.0s/15s  300.00 iters/s
+
+running (08.0s), 0044/0127 VUs, 2326 complete and 0 interrupted iterations
+create   [  53% ] 0044/0127 VUs  08.0s/15s  300.00 iters/s
+
+running (09.0s), 0029/0127 VUs, 2641 complete and 0 interrupted iterations
+create   [  60% ] 0029/0127 VUs  09.0s/15s  300.00 iters/s
+
+running (10.0s), 0038/0127 VUs, 2932 complete and 0 interrupted iterations
+create   [  67% ] 0038/0127 VUs  10.0s/15s  300.00 iters/s
+
+running (11.0s), 0045/0127 VUs, 3225 complete and 0 interrupted iterations
+create   [  73% ] 0045/0127 VUs  11.0s/15s  300.00 iters/s
+
+running (12.0s), 0037/0127 VUs, 3533 complete and 0 interrupted iterations
+create   [  80% ] 0037/0127 VUs  12.0s/15s  300.00 iters/s
+
+running (13.0s), 0046/0127 VUs, 3824 complete and 0 interrupted iterations
+create   [  87% ] 0046/0127 VUs  13.0s/15s  300.00 iters/s
+
+running (14.0s), 0125/0127 VUs, 4045 complete and 0 interrupted iterations
+create   [  93% ] 0125/0127 VUs  14.0s/15s  300.00 iters/s
+
+running (15.0s), 0039/0127 VUs, 4431 complete and 0 interrupted iterations
+create   [ 100% ] 0039/0127 VUs  15.0s/15s  300.00 iters/s
+
+running (15.9s), 0000/0127 VUs, 4474 complete and 0 interrupted iterations
+create ✓ [ 100% ] 0000/0127 VUs  15s  300.00 iters/s
+time="2026-11-08T07:12:55Z" level=error msg="thresholds on metrics 'dropped_iterations, http_req_duration{endpoint:create}' have been crossed"

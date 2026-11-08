@@ -1,0 +1,229 @@
+{
+  "sampledTopFrames": [
+    [
+      "sun/nio/ch/EPoll.wait",
+      420
+    ],
+    [
+      "sun/nio/ch/Net.poll",
+      243
+    ],
+    [
+      "sun/nio/ch/Net.accept",
+      94
+    ],
+    [
+      "sun/nio/ch/SocketDispatcher.write0",
+      44
+    ],
+    [
+      "sun/nio/ch/SocketDispatcher.writev0",
+      11
+    ],
+    [
+      "sun/nio/ch/EventFD.set0",
+      4
+    ],
+    [
+      "sun/nio/ch/SocketDispatcher.read0",
+      4
+    ],
+    [
+      "java/util/regex/Pattern$BmpCharPropertyGreedy.match",
+      3
+    ],
+    [
+      "sun/security/jca/ProviderList.getService",
+      2
+    ],
+    [
+      "java/util/HashMap.get",
+      2
+    ],
+    [
+      "sun/nio/ch/Net.shutdown",
+      2
+    ],
+    [
+      "java/lang/invoke/DirectMethodHandle.allocateInstance",
+      2
+    ],
+    [
+      "java/util/concurrent/ConcurrentHashMap.get",
+      2
+    ],
+    [
+      "io/micrometer/common/KeyValues.of",
+      2
+    ],
+    [
+      "sun/nio/ch/EPollSelectorImpl.doSelect",
+      1
+    ],
+    [
+      "org/apache/kafka/common/message/FetchRequestData$FetchTopic.addSize",
+      1
+    ],
+    [
+      "org/apache/tomcat/util/http/MimeHeaders.createHeader",
+      1
+    ],
+    [
+      "org/apache/tomcat/util/buf/ByteChunk.toString",
+      1
+    ],
+    [
+      "io/micrometer/core/instrument/MeterRegistry.registerMeterIfNecessary",
+      1
+    ],
+    [
+      "com/fasterxml/jackson/databind/deser/std/BaseNodeDeserializer._deserializeContainerNoRecursion",
+      1
+    ],
+    [
+      "java/lang/String.lastIndexOf",
+      1
+    ],
+    [
+      "org/springframework/core/annotation/TypeMappedAnnotations.isMappingForType",
+      1
+    ],
+    [
+      "com/nimbusds/jose/shaded/gson/internal/bind/ObjectTypeAdapter.read",
+      1
+    ],
+    [
+      "org/springframework/core/annotation/SynthesizedMergedAnnotationInvocationHandler.getAttributeValue",
+      1
+    ],
+    [
+      "org/apache/kafka/common/record/RecordBatchIterator.makeNext",
+      1
+    ],
+    [
+      "org/springframework/security/web/ObservationFilterChainDecorator.wrap",
+      1
+    ],
+    [
+      "java/lang/ref/Reference.clear",
+      1
+    ],
+    [
+      "java/util/concurrent/atomic/LongAdder.add",
+      1
+    ],
+    [
+      "java/util/TreeMap.getEntry",
+      1
+    ],
+    [
+      "org/springframework/web/filter/RequestContextFilter.doFilterInternal",
+      1
+    ]
+  ],
+  "cpuLoadSamples": [
+    {
+      "startTime": "2026-11-08T07:13:08.002951864Z",
+      "jvmUser": 0.20713279,
+      "jvmSystem": 0.043522064,
+      "machineTotal": 0.52387667
+    },
+    {
+      "startTime": "2026-11-08T07:13:09.003412252Z",
+      "jvmUser": 0.017632242,
+      "jvmSystem": 0.005037783,
+      "machineTotal": 0.108312346
+    },
+    {
+      "startTime": "2026-11-08T07:13:10.004180863Z",
+      "jvmUser": 0.21079692,
+      "jvmSystem": 0.048843186,
+      "machineTotal": 0.5989717
+    },
+    {
+      "startTime": "2026-11-08T07:13:11.005816088Z",
+      "jvmUser": 0.259542,
+      "jvmSystem": 0.07124682,
+      "machineTotal": 0.8422392
+    },
+    {
+      "startTime": "2026-11-08T07:13:12.007128378Z",
+      "jvmUser": 0.24556962,
+      "jvmSystem": 0.06835443,
+      "machineTotal": 0.93670887
+    },
+    {
+      "startTime": "2026-11-08T07:13:13.009098953Z",
+      "jvmUser": 0.259542,
+      "jvmSystem": 0.07379135,
+      "machineTotal": 0.9033079
+    },
+    {
+      "startTime": "2026-11-08T07:13:14.012135909Z",
+      "jvmUser": 0.29040405,
+      "jvmSystem": 0.065656565,
+      "machineTotal": 0.9444444
+    },
+    {
+      "startTime": "2026-11-08T07:13:15.015323980Z",
+      "jvmUser": 0.32315522,
+      "jvmSystem": 0.08142494,
+      "machineTotal": 0.93638676
+    },
+    {
+      "startTime": "2026-11-08T07:13:16.016169411Z",
+      "jvmUser": 0.28535354,
+      "jvmSystem": 0.060606062,
+      "machineTotal": 0.9419192
+    },
+    {
+      "startTime": "2026-11-08T07:13:17.017309865Z",
+      "jvmUser": 0.25252524,
+      "jvmSystem": 0.078282826,
+      "machineTotal": 0.8989899
+    },
+    {
+      "startTime": "2026-11-08T07:13:18.019516745Z",
+      "jvmUser": 0.2994924,
+      "jvmSystem": 0.0786802,
+      "machineTotal": 0.9137056
+    },
+    {
+      "startTime": "2026-11-08T07:13:19.025275625Z",
+      "jvmUser": 0.34256926,
+      "jvmSystem": 0.06801008,
+      "machineTotal": 0.92191434
+    },
+    {
+      "startTime": "2026-11-08T07:13:20.028017119Z",
+      "jvmUser": 0.22335026,
+      "jvmSystem": 0.07360406,
+      "machineTotal": 0.893401
+    },
+    {
+      "startTime": "2026-11-08T07:13:21.030802570Z",
+      "jvmUser": 0.23273657,
+      "jvmSystem": 0.071611255,
+      "machineTotal": 0.85422
+    },
+    {
+      "startTime": "2026-11-08T07:13:22.039767115Z",
+      "jvmUser": 0.2964824,
+      "jvmSystem": 0.07537688,
+      "machineTotal": 0.89698493
+    },
+    {
+      "startTime": "2026-11-08T07:13:23.041057232Z",
+      "jvmUser": 0.29305914,
+      "jvmSystem": 0.08483291,
+      "machineTotal": 0.8435897
+    },
+    {
+      "startTime": "2026-11-08T07:13:24.041900055Z",
+      "jvmUser": 0.22278482,
+      "jvmSystem": 0.07848101,
+      "machineTotal": 0.8604061
+    }
+  ],
+  "interpretation": "stack sample frequency, not wall-time percentage"
+}

@@ -1,0 +1,63 @@
+
+         /\      Grafana   /‾‾/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ‾‾\ 
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/ 
+
+     execution: local
+        script: /work/benchmarks/load.js
+        output: -
+
+     scenarios: (100.00%) 1 scenario, 1000 max VUs, 45s max duration (incl. graceful stop):
+              * create: 300.00 iterations/s for 15s (maxVUs: 100-1000, gracefulStop: 30s)
+
+
+running (01.0s), 0021/0100 VUs, 276 complete and 0 interrupted iterations
+create   [   7% ] 0021/0100 VUs  01.0s/15s  300.00 iters/s
+
+running (02.0s), 0021/0100 VUs, 576 complete and 0 interrupted iterations
+create   [  13% ] 0021/0100 VUs  02.0s/15s  300.00 iters/s
+
+running (03.0s), 0021/0100 VUs, 876 complete and 0 interrupted iterations
+create   [  20% ] 0021/0100 VUs  03.0s/15s  300.00 iters/s
+
+running (04.0s), 0020/0100 VUs, 1177 complete and 0 interrupted iterations
+create   [  27% ] 0020/0100 VUs  04.0s/15s  300.00 iters/s
+
+running (05.0s), 0020/0100 VUs, 1477 complete and 0 interrupted iterations
+create   [  33% ] 0020/0100 VUs  05.0s/15s  300.00 iters/s
+
+running (06.0s), 0030/0100 VUs, 1767 complete and 0 interrupted iterations
+create   [  40% ] 0030/0100 VUs  06.0s/15s  300.00 iters/s
+
+running (07.0s), 0021/0100 VUs, 2076 complete and 0 interrupted iterations
+create   [  47% ] 0021/0100 VUs  07.0s/15s  300.00 iters/s
+
+running (08.0s), 0019/0100 VUs, 2378 complete and 0 interrupted iterations
+create   [  53% ] 0019/0100 VUs  08.0s/15s  300.00 iters/s
+
+running (09.0s), 0019/0100 VUs, 2678 complete and 0 interrupted iterations
+create   [  60% ] 0019/0100 VUs  09.0s/15s  300.00 iters/s
+
+running (10.0s), 0018/0100 VUs, 2979 complete and 0 interrupted iterations
+create   [  67% ] 0018/0100 VUs  10.0s/15s  300.00 iters/s
+
+running (11.0s), 0019/0100 VUs, 3278 complete and 0 interrupted iterations
+create   [  73% ] 0019/0100 VUs  11.0s/15s  300.00 iters/s
+
+running (12.0s), 0021/0100 VUs, 3576 complete and 0 interrupted iterations
+create   [  80% ] 0021/0100 VUs  12.0s/15s  300.00 iters/s
+
+running (13.0s), 0018/0100 VUs, 3879 complete and 0 interrupted iterations
+create   [  87% ] 0018/0100 VUs  13.0s/15s  300.00 iters/s
+
+running (14.0s), 0022/0100 VUs, 4175 complete and 0 interrupted iterations
+create   [  93% ] 0022/0100 VUs  14.0s/15s  300.00 iters/s
+
+running (15.0s), 0018/0100 VUs, 4479 complete and 0 interrupted iterations
+create   [ 100% ] 0018/0100 VUs  15.0s/15s  300.00 iters/s
+
+running (15.1s), 0000/0100 VUs, 4501 complete and 0 interrupted iterations
+create ✓ [ 100% ] 0000/0100 VUs  15s  300.00 iters/s
+time="2026-11-08T07:13:44Z" level=error msg="thresholds on metrics 'http_req_duration{endpoint:create}' have been crossed"
