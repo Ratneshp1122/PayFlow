@@ -10,13 +10,16 @@ jobs:
     timeout-minutes: 15
     env:
       VARIANT: '${{ matrix.variant }}'
+      PROFILE_ENABLED: 'false'
       LAZY_INIT: '${{ matrix.variant == ''lazy'' && ''true'' || ''false'' }}'
     steps:
       - uses: actions/checkout@v4
       - name: Build and validate runtime
         run: |
-          if [ "$VARIANT" = cds ]; then docker compose -f compose.yml -f compose.cds.yml up -d --build; else docker compose up -d --build; fi
-          python3 scripts/smoke.py
+          mkdir -p evidence
+          git rev-parse HEAD > evidence/commit.txt
+          if [ "$VARIANT" = cds ]; then docker compose -f compose.yml -f compose.cds.yml up -d --build 2>&1 | tee evidence/build.log; else docker compose up -d --build 2>&1 | tee evidence/build.log; fi
+          python3 scripts/smoke.py 2>&1 | tee evidence/smoke.log
       - run: python3 benchmarks/startup.py
       - uses: actions/upload-artifact@v4
         if: always()

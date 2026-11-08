@@ -15,7 +15,7 @@ def token(user):
  password=os.environ.get('OPERATOR_PASSWORD','local-operator-password') if user=='operator' else os.environ.get('MERCHANT_PASSWORD','local-merchant-password')
  return http('/auth/token',method='POST',basic=user+':'+password)['access_token']
 def inventory(path):
- for name,args in [('cpu',['lscpu']),('memory',['free','-b']),('kernel',['uname','-a']),('docker',['docker','version'])]:
+ for name,args in [('cpu',['lscpu']),('memory',['free','-b']),('disk',['df','-B1','.']),('kernel',['uname','-a']),('docker',['docker','version'])]:
   (path/(name+'.txt')).write_text(command(*args)+'\n')
  (path/'commit.txt').write_text(command('git','rev-parse','HEAD')+'\n')
  (path/'configuration.json').write_text(json.dumps({key:os.environ.get(key,default) for key,default in [('DB_POOL_SIZE','10'),('PROFILE_ENABLED','true'),('WORKER_CONCURRENCY','4'),('WEBHOOK_CONCURRENCY','4'),('OUTBOX_BATCH_SIZE','128'),('LAZY_INIT','false')]},indent=2))
@@ -50,14 +50,14 @@ class Session:
   cid=command(*COMPOSE,'ps','-q','app');raw=pathlib.Path('/tmp/payflow-profile.jfr');command('docker','cp',cid+':/tmp/payflow-profile.jfr',str(raw))
   text=command('jfr','print','--json','--events','jdk.ExecutionSample,jdk.NativeMethodSample,jdk.CPULoad,jdk.GarbageCollection',str(raw))
   with gzip.open(self.path/'cpu-events.json.gz','wt') as f:f.write(text)
-  data=json.loads(text);counts=collections.Counter();loads=[]
+  data=json.loads(text);counts=collections.Counter();by_type=collections.defaultdict(collections.Counter);loads=[]
   for event in data.get('recording',{}).get('events',[]):
    values=event.get('values',{})
    if event['type']=='jdk.CPULoad':loads.append(values)
    trace=values.get('stackTrace') or {};frames=trace.get('frames',[])
    if frames:
-    method=frames[0].get('method',{});counts[method.get('type',{}).get('name','?')+'.'+method.get('name','?')]+=1
-  (self.path/'cpu-summary.json').write_text(json.dumps({'sampledTopFrames':counts.most_common(30),'cpuLoadSamples':loads,'interpretation':'stack sample frequency, not wall-time percentage'},indent=2))
+    method=frames[0].get('method',{});frame=method.get('type',{}).get('name','?')+'.'+method.get('name','?');counts[frame]+=1;by_type[event['type']][frame]+=1
+  (self.path/'cpu-summary.json').write_text(json.dumps({'sampledTopFrames':counts.most_common(30),'topFramesByEventType':{k:v.most_common(30) for k,v in by_type.items()},'cpuLoadSamples':loads,'interpretation':'stack sample frequency, not wall-time percentage; native stacks can include waiting'},indent=2))
   (self.path/'containers.txt').write_text(command('docker','stats','--no-stream'))
   self.active=False
  def drain(self,timeout=120):
@@ -66,7 +66,7 @@ class Session:
    last=http('/ops/status',self.operator)
    if all(last.get(k,-1)==0 for k in ['pendingOperations','pendingWebhooks','unpublishedEvents']):break
    time.sleep(1)
-  (self.path/'drain.json').write_text(json.dumps({'seconds':time.monotonic()-start,'status':last,'fullyDrained':all(last.get(k,-1)==0 for k in ['pendingOperations','pendingWebhooks','unpublishedEvents'])},indent=2))
+  (self.path/'drain.json').write_text(json.dumps({'seconds':time.monotonic()-start,'measurementScope':'polling begins after diagnostic collection; not time from load end','status':last,'fullyDrained':all(last.get(k,-1)==0 for k in ['pendingOperations','pendingWebhooks','unpublishedEvents'])},indent=2))
 def initialize():
  sql('CREATE EXTENSION IF NOT EXISTS pg_stat_statements')
  inventory(ROOT)

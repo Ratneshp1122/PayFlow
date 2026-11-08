@@ -188,13 +188,12 @@ class RecoveryTest {
           exchange.close();
         });
     server.start();
-    try {
-      var delivery =
-          new Webhooks(
-              p,
-              "test-secret",
-              "http://127.0.0.1:" + server.getAddress().getPort() + "/hook",
-              true);
+    try (var delivery =
+        new Webhooks(
+            p,
+            "test-secret",
+            "http://127.0.0.1:" + server.getAddress().getPort() + "/hook",
+            true)) {
       delivery.deliver();
       org.awaitility.Awaitility.await()
           .atMost(java.time.Duration.ofSeconds(10))
@@ -215,7 +214,6 @@ class RecoveryTest {
           1,
           p.db.queryForObject(
               "SELECT count(*) FROM journal WHERE business_id=?", Integer.class, payment));
-      delivery.close();
     } finally {
       server.stop(0);
     }

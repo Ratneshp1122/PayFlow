@@ -88,14 +88,43 @@ k6 run -e RATE=100 -e DURATION=60s -e RUN_ID=baseline benchmarks/load.js
 k6 run -e RATE=1200 -e DURATION=60s -e RUN_ID=target benchmarks/load.js
 ```
 
-`summary.json` includes all HTTP responses, p99, and dropped iterations. Preserve it under a unique run directory together with the git SHA, CPU/RAM/disk, Docker limits, workload duration, `/ops/status` snapshots, and `docker stats`. The 35ms threshold deliberately fails if unmet. The payment latency distribution includes bearer-token verification; the separately tagged token exchange includes password verification. Measure queue depth during the run and time to drain after it; the serial provider worker and database round trips are likely bottlenecks long before a headline RPS target. Do not weaken durability or disable authentication just to improve a number.
+`summary.json` includes all HTTP responses, p99, and dropped iterations. Preserve it under a unique run directory together with the git SHA, CPU/RAM/disk, Docker limits, workload duration, `/ops/status` snapshots, and `docker stats`. The 35ms threshold deliberately fails if unmet. Payment latency includes bearer-token verification. The profiling workflows mint a token before the load interval. Measure queue depth and completion alongside acceptance; fast `202` responses alone do not prove the workers keep up.
 
 Use `python benchmarks/recovery.py` for a scoped application-process failure trial. It records observed recovery, rather than forcing a passing result.
 
 ## Improving efficiency
 
-1. Measure API authentication, pool wait, SQL time, and provider/ledger completion separately.
-2. Profile operation polling and transaction round trips; introduce bounded worker concurrency while retaining locks, tokens, and stable provider IDs.
-3. Batch outbox publication without marking events published before Kafka acknowledges.
+1. Optional `compose.profile.yml` enables Hikari acquisition timing, SQL execution/commit timers, PostgreSQL statement statistics, and restricted operator-only JFR capture. Profiling has overhead; it is disabled in the normal Compose stack.
+2. Provider and webhook workers each default to four tasks. Capacity is reserved before database leasing, preserving fencing and stable provider IDs without an unbounded task queue. Configure `WORKER_CONCURRENCY` and `WEBHOOK_CONCURRENCY` in 1..16.
+3. The outbox sends a bounded batch (default 128, maximum 512), waits for acknowledgements, then batches fenced PostgreSQL updates. Kafka failure leaves rows retryable; duplicate events remain possible and consumers deduplicate. Configure `OUTBOX_BATCH_SIZE`.
 4. Tune pools against measured database capacity; extra threads cannot create disk throughput. The default `DB_POOL_SIZE=10` was retained after a 24-connection trial made the target-rate results worse.
 5. Consider CDC and horizontally partitioned workers only after the correctness tests pass on the changed implementation.
+
+## Reproduce the measurements
+
+The Actions workflows `profile.yml`, `separate-hosts.yml`, and `startup.yml` run three trials and commit raw evidence, hardware, commit SHA, and README tables under [benchmarks/runs](benchmarks/runs). Failed thresholds stay visible. The separate-host workflow uses two runners and an authenticated temporary TLS relay with encrypted credential handoff. Relay latency and its 200-in-flight limit are part of that experiment; it is not a direct-LAN capacity test.
+
+At 300 offered RPS for 15 seconds, [bounded-worker local trials](benchmarks/runs/42457755091/README.md) recorded acceptance p99 of 91.47, 16.42, and 14.31 ms with no dropped iterations. The two warmed trials had zero pending operations, events, and webhooks at the end snapshot. [The previous serial-worker trials](benchmarks/runs/42456894463/README.md) accumulated queues in all three trials. The first optimized trial still accumulated work and missed 35 ms. `drain.json` polling starts after diagnostic collection, so its duration is not latency from the final load request to completion.
+
+[Separate-host optimized trials](benchmarks/runs/42457757552/README.md) recorded client p99 of 1153.11, 133.41, and 128.90 ms, with 27, 0, and 0 dropped iterations. All missed 35 ms. Do not subtract guessed network latency or present these as local Docker measurements.
+
+## Startup experiments
+
+Normal startup remains eager. Use `LAZY_INIT=true docker compose up -d --build` to opt into lazy initialization. For the trained Java 21 CDS image:
+
+```sh
+docker compose -f compose.yml -f compose.cds.yml up -d --build
+python scripts/smoke.py
+```
+
+`Dockerfile.cds` extracts the application and trains an archive with dependency connections disabled only during training. Runtime enables normal migrations, workers and listeners, and requires the archive to load (`-Xshare:on`). Rebuild the archive with every application/JDK/image change. This follows the [Spring Boot CDS packaging guidance](https://docs.spring.io/spring-boot/3.5/reference/packaging/container-images/dockerfiles.html#packaging.container-images.dockerfiles.cds).
+
+[Three startup trials per variant](benchmarks/runs/42457862855/README.md) measured:
+
+| Variant | Health ready, seconds | First completed payment, seconds |
+|---|---|---|
+| Standard image | 5.78 / 5.62 / 5.66 | 6.08 / 5.90 / 5.85 |
+| Lazy initialization | 5.86 / 5.67 / 5.72 | 6.08 / 5.95 / 5.99 |
+| Extracted CDS image | 4.12 / 4.33 / 4.22 | 4.40 / 4.60 / 4.50 |
+
+These are application restarts with warm dependencies, including Docker start-command time. Lazy initialization did not help in this run. CDS improved startup, but did not achieve three seconds; this comparison includes both the extracted layout and CDS. Variants used separate hosted runners, so host variation is a confounder. The old startup inventory's `PROFILE_ENABLED=true` is a collector default error: these variants used base Compose with profiling disabled. Raw evidence is preserved; future startup inventories record false explicitly.
