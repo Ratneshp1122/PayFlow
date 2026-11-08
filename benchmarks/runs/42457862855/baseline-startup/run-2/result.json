@@ -1,0 +1,14 @@
+{
+  "variant": "baseline",
+  "trial": 2,
+  "scenario": "warm-dependency app restart",
+  "healthSeconds": 5.618152570999996,
+  "acceptedSeconds": 5.81346259,
+  "completedSeconds": 5.90198235199999,
+  "status": {
+    "unpublishedEvents": 0,
+    "unbalancedJournals": 0,
+    "pendingWebhooks": 0,
+    "pendingOperations": 0
+  }
+}

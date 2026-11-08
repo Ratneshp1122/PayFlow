@@ -1,0 +1,160 @@
+app-1  | 	sasl.login.retry.backoff.ms = 100
+app-1  | 	sasl.mechanism = GSSAPI
+app-1  | 	sasl.oauthbearer.clock.skew.seconds = 30
+app-1  | 	sasl.oauthbearer.expected.audience = null
+app-1  | 	sasl.oauthbearer.expected.issuer = null
+app-1  | 	sasl.oauthbearer.header.urlencode = false
+app-1  | 	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+app-1  | 	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+app-1  | 	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+app-1  | 	sasl.oauthbearer.jwks.endpoint.url = null
+app-1  | 	sasl.oauthbearer.scope.claim.name = scope
+app-1  | 	sasl.oauthbearer.sub.claim.name = sub
+app-1  | 	sasl.oauthbearer.token.endpoint.url = null
+app-1  | 	security.protocol = PLAINTEXT
+app-1  | 	security.providers = null
+app-1  | 	send.buffer.bytes = 131072
+app-1  | 	session.timeout.ms = 45000
+app-1  | 	socket.connection.setup.timeout.max.ms = 30000
+app-1  | 	socket.connection.setup.timeout.ms = 10000
+app-1  | 	ssl.cipher.suites = null
+app-1  | 	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+app-1  | 	ssl.endpoint.identification.algorithm = https
+app-1  | 	ssl.engine.factory.class = null
+app-1  | 	ssl.key.password = null
+app-1  | 	ssl.keymanager.algorithm = SunX509
+app-1  | 	ssl.keystore.certificate.chain = null
+app-1  | 	ssl.keystore.key = null
+app-1  | 	ssl.keystore.location = null
+app-1  | 	ssl.keystore.password = null
+app-1  | 	ssl.keystore.type = JKS
+app-1  | 	ssl.protocol = TLSv1.3
+app-1  | 	ssl.provider = null
+app-1  | 	ssl.secure.random.implementation = null
+app-1  | 	ssl.trustmanager.algorithm = PKIX
+app-1  | 	ssl.truststore.certificates = null
+app-1  | 	ssl.truststore.location = null
+app-1  | 	ssl.truststore.password = null
+app-1  | 	ssl.truststore.type = JKS
+app-1  | 	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+app-1  | 
+app-1  | 2026-11-08T07:14:02.512Z  INFO 1 --- [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+app-1  | 2026-11-08T07:14:02.512Z  INFO 1 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+app-1  | 2026-11-08T07:14:02.554Z  INFO 1 --- [           main] o.a.k.c.t.i.KafkaMetricsCollector        : initializing Kafka metrics collector
+app-1  | 2026-11-08T07:14:02.752Z  INFO 1 --- [nio-8080-exec-1] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 3 endpoints beneath base path '/actuator'
+app-1  | 2026-11-08T07:14:02.773Z  INFO 1 --- [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 3.9.1
+app-1  | 2026-11-08T07:14:02.773Z  INFO 1 --- [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: f745dfdcee2b9851
+app-1  | 2026-11-08T07:14:02.773Z  INFO 1 --- [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1794122042771
+app-1  | 2026-11-08T07:14:02.797Z  INFO 1 --- [           main] o.a.k.c.c.i.ClassicKafkaConsumer         : [Consumer clientId=consumer-payflow-webhooks-v1-1, groupId=payflow-webhooks-v1] Subscribed to topic(s): payflow.lifecycle.v1
+app-1  | 2026-11-08T07:14:02.860Z  INFO 1 --- [           main] dev.ratnesh.payflow.PayFlow              : Started PayFlow in 3.803 seconds (process running for 4.203)
+app-1  | 2026-11-08T07:14:02.871Z  INFO 1 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 359 ms
+app-1  | 2026-11-08T07:14:03.197Z  INFO 1 --- [nio-8080-exec-1] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name users
+app-1  | 2026-11-08T07:14:03.348Z  INFO 1 --- [ntainer#0-0-C-1] org.apache.kafka.clients.Metadata        : [Consumer clientId=consumer-payflow-webhooks-v1-1, groupId=payflow-webhooks-v1] Cluster ID: 5L6g3nShT-eMCtK--X86sw
+app-1  | 2026-11-08T07:14:03.348Z  INFO 1 --- [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-payflow-webhooks-v1-1, groupId=payflow-webhooks-v1] Discovered group coordinator kafka:9092 (id: 2147483646 rack: null)
+app-1  | 2026-11-08T07:14:03.351Z  INFO 1 --- [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-payflow-webhooks-v1-1, groupId=payflow-webhooks-v1] (Re-)joining group
+app-1  | 2026-11-08T07:14:03.368Z  INFO 1 --- [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-payflow-webhooks-v1-1, groupId=payflow-webhooks-v1] Request joining group due to: need to re-join with the given member-id: consumer-payflow-webhooks-v1-1-05d69eaa-7f05-44f6-8016-b20ca26571b5
+app-1  | 2026-11-08T07:14:03.368Z  INFO 1 --- [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-payflow-webhooks-v1-1, groupId=payflow-webhooks-v1] (Re-)joining group
+app-1  | 2026-11-08T07:14:04.065Z  INFO 1 --- [   scheduling-3] o.a.k.clients.producer.ProducerConfig    : ProducerConfig values: 
+app-1  | 	acks = -1
+app-1  | 	auto.include.jmx.reporter = true
+app-1  | 	batch.size = 65536
+app-1  | 	bootstrap.servers = [kafka:9092]
+app-1  | 	buffer.memory = 33554432
+app-1  | 	client.dns.lookup = use_all_dns_ips
+app-1  | 	client.id = producer-1
+app-1  | 	compression.gzip.level = -1
+app-1  | 	compression.lz4.level = 9
+app-1  | 	compression.type = none
+app-1  | 	compression.zstd.level = 3
+app-1  | 	connections.max.idle.ms = 540000
+app-1  | 	delivery.timeout.ms = 10000
+app-1  | 	enable.idempotence = true
+app-1  | 	enable.metrics.push = true
+app-1  | 	interceptor.classes = []
+app-1  | 	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+app-1  | 	linger.ms = 5
+app-1  | 	max.block.ms = 5000
+app-1  | 	max.in.flight.requests.per.connection = 5
+app-1  | 	max.request.size = 1048576
+app-1  | 	metadata.max.age.ms = 300000
+app-1  | 	metadata.max.idle.ms = 300000
+app-1  | 	metadata.recovery.strategy = none
+app-1  | 	metric.reporters = []
+app-1  | 	metrics.num.samples = 2
+app-1  | 	metrics.recording.level = INFO
+app-1  | 	metrics.sample.window.ms = 30000
+app-1  | 	partitioner.adaptive.partitioning.enable = true
+app-1  | 	partitioner.availability.timeout.ms = 0
+app-1  | 	partitioner.class = null
+app-1  | 	partitioner.ignore.keys = false
+app-1  | 	receive.buffer.bytes = 32768
+app-1  | 	reconnect.backoff.max.ms = 1000
+app-1  | 	reconnect.backoff.ms = 50
+app-1  | 	request.timeout.ms = 5000
+app-1  | 	retries = 2147483647
+app-1  | 	retry.backoff.max.ms = 1000
+app-1  | 	retry.backoff.ms = 100
+app-1  | 	sasl.client.callback.handler.class = null
+app-1  | 	sasl.jaas.config = null
+app-1  | 	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+app-1  | 	sasl.kerberos.min.time.before.relogin = 60000
+app-1  | 	sasl.kerberos.service.name = null
+app-1  | 	sasl.kerberos.ticket.renew.jitter = 0.05
+app-1  | 	sasl.kerberos.ticket.renew.window.factor = 0.8
+app-1  | 	sasl.login.callback.handler.class = null
+app-1  | 	sasl.login.class = null
+app-1  | 	sasl.login.connect.timeout.ms = null
+app-1  | 	sasl.login.read.timeout.ms = null
+app-1  | 	sasl.login.refresh.buffer.seconds = 300
+app-1  | 	sasl.login.refresh.min.period.seconds = 60
+app-1  | 	sasl.login.refresh.window.factor = 0.8
+app-1  | 	sasl.login.refresh.window.jitter = 0.05
+app-1  | 	sasl.login.retry.backoff.max.ms = 10000
+app-1  | 	sasl.login.retry.backoff.ms = 100
+app-1  | 	sasl.mechanism = GSSAPI
+app-1  | 	sasl.oauthbearer.clock.skew.seconds = 30
+app-1  | 	sasl.oauthbearer.expected.audience = null
+app-1  | 	sasl.oauthbearer.expected.issuer = null
+app-1  | 	sasl.oauthbearer.header.urlencode = false
+app-1  | 	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+app-1  | 	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+app-1  | 	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+app-1  | 	sasl.oauthbearer.jwks.endpoint.url = null
+app-1  | 	sasl.oauthbearer.scope.claim.name = scope
+app-1  | 	sasl.oauthbearer.sub.claim.name = sub
+app-1  | 	sasl.oauthbearer.token.endpoint.url = null
+app-1  | 	security.protocol = PLAINTEXT
+app-1  | 	security.providers = null
+app-1  | 	send.buffer.bytes = 131072
+app-1  | 	socket.connection.setup.timeout.max.ms = 30000
+app-1  | 	socket.connection.setup.timeout.ms = 10000
+app-1  | 	ssl.cipher.suites = null
+app-1  | 	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+app-1  | 	ssl.endpoint.identification.algorithm = https
+app-1  | 	ssl.engine.factory.class = null
+app-1  | 	ssl.key.password = null
+app-1  | 	ssl.keymanager.algorithm = SunX509
+app-1  | 	ssl.keystore.certificate.chain = null
+app-1  | 	ssl.keystore.key = null
+app-1  | 	ssl.keystore.location = null
+app-1  | 	ssl.keystore.password = null
+app-1  | 	ssl.keystore.type = JKS
+app-1  | 	ssl.protocol = TLSv1.3
+app-1  | 	ssl.provider = null
+app-1  | 	ssl.secure.random.implementation = null
+app-1  | 	ssl.trustmanager.algorithm = PKIX
+app-1  | 	ssl.truststore.certificates = null
+app-1  | 	ssl.truststore.location = null
+app-1  | 	ssl.truststore.password = null
+app-1  | 	ssl.truststore.type = JKS
+app-1  | 	transaction.timeout.ms = 60000
+app-1  | 	transactional.id = null
+app-1  | 	value.serializer = class org.apache.kafka.common.serialization.StringSerializer
+app-1  | 
+app-1  | 2026-11-08T07:14:04.066Z  INFO 1 --- [   scheduling-3] o.a.k.c.t.i.KafkaMetricsCollector        : initializing Kafka metrics collector
+app-1  | 2026-11-08T07:14:04.076Z  INFO 1 --- [   scheduling-3] o.a.k.clients.producer.KafkaProducer     : [Producer clientId=producer-1] Instantiated an idempotent producer.
+app-1  | 2026-11-08T07:14:04.091Z  INFO 1 --- [   scheduling-3] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 3.9.1
+app-1  | 2026-11-08T07:14:04.091Z  INFO 1 --- [   scheduling-3] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: f745dfdcee2b9851
+app-1  | 2026-11-08T07:14:04.091Z  INFO 1 --- [   scheduling-3] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1794122044091
+app-1  | 2026-11-08T07:14:04.099Z  INFO 1 --- [ad | producer-1] org.apache.kafka.clients.Metadata        : [Producer clientId=producer-1] Cluster ID: 5L6g3nShT-eMCtK--X86sw
+app-1  | 2026-11-08T07:14:04.100Z  INFO 1 --- [ad | producer-1] o.a.k.c.p.internals.TransactionManager   : [Producer clientId=producer-1] ProducerId set to 1 with epoch 0

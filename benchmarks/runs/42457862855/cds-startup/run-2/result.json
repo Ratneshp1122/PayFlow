@@ -1,0 +1,14 @@
+{
+  "variant": "cds",
+  "trial": 2,
+  "scenario": "warm-dependency app restart",
+  "healthSeconds": 4.326740225999998,
+  "acceptedSeconds": 4.509715827999997,
+  "completedSeconds": 4.601305057000005,
+  "status": {
+    "pendingOperations": 0,
+    "pendingWebhooks": 0,
+    "unbalancedJournals": 0,
+    "unpublishedEvents": 0
+  }
+}

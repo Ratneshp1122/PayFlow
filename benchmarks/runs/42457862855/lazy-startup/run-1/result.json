@@ -1,0 +1,14 @@
+{
+  "variant": "lazy",
+  "trial": 1,
+  "scenario": "warm-dependency app restart",
+  "healthSeconds": 5.8579611520000014,
+  "acceptedSeconds": 6.0015660990000015,
+  "completedSeconds": 6.081410094000006,
+  "status": {
+    "pendingOperations": 0,
+    "pendingWebhooks": 0,
+    "unbalancedJournals": 0,
+    "unpublishedEvents": 0
+  }
+}

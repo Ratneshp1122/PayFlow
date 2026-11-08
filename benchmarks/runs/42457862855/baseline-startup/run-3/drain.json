@@ -1,0 +1,10 @@
+{
+  "seconds": 1.0149493109999952,
+  "status": {
+    "unpublishedEvents": 0,
+    "unbalancedJournals": 0,
+    "pendingWebhooks": 0,
+    "pendingOperations": 0
+  },
+  "fullyDrained": true
+}
