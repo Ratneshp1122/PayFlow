@@ -4,12 +4,12 @@ ROOT=pathlib.Path('evidence');ROOT.mkdir(exist_ok=True)
 COMPOSE=['docker','compose','-f','compose.yml','-f','compose.profile.yml']
 def command(*args):return subprocess.check_output(list(args),text=True).strip()
 def sql(query):return command(*COMPOSE,'exec','-T','postgres','psql','-U','payflow','-Atc',query)
-def http(path,token=None,method='GET',body=None,base='http://localhost:8080',basic=None):
+def http(path,token=None,method='GET',body=None,base='http://localhost:8080',basic=None,timeout=60):
  headers={'Content-Type':'application/json'}
  if token:headers['Authorization']='Bearer '+token
  if basic:headers['Authorization']='Basic '+base64.b64encode(basic.encode()).decode()
  req=urllib.request.Request(base+path,headers=headers,method=method,data=json.dumps(body).encode() if body is not None else None)
- with urllib.request.urlopen(req,timeout=60) as r:
+ with urllib.request.urlopen(req,timeout=timeout) as r:
   raw=r.read();return json.loads(raw) if raw else {}
 def token(user):
  password=os.environ.get('OPERATOR_PASSWORD','local-operator-password') if user=='operator' else os.environ.get('MERCHANT_PASSWORD','local-merchant-password')

@@ -4,3 +4,9 @@ target/
 benchmarks/results/*
 !benchmarks/results/.gitkeep
 .idea/
+evidence/
+exchange/
+.run-control.json
+.handoff.json
+.load-private.pem
+.server-finished
