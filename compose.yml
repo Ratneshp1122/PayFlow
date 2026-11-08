@@ -46,6 +46,9 @@ services:
       WEBHOOK_SECRET: ${WEBHOOK_SECRET:-local-webhook-secret-change-me}
       JWT_SECRET: ${JWT_SECRET:-local-only-signing-secret-at-least-32-bytes-change-before-sharing}
       RATE_LIMIT: ${RATE_LIMIT:-2000}
+      WORKER_CONCURRENCY: ${WORKER_CONCURRENCY:-4}
+      WEBHOOK_CONCURRENCY: ${WEBHOOK_CONCURRENCY:-4}
+      OUTBOX_BATCH_SIZE: ${OUTBOX_BATCH_SIZE:-128}
     depends_on:
       postgres: {condition: service_healthy}
       kafka: {condition: service_started}

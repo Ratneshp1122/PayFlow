@@ -19,6 +19,8 @@ spring:
       acks: all
       properties:
         enable.idempotence: true
+        batch.size: 65536
+        linger.ms: 5
         delivery.timeout.ms: 10000
         request.timeout.ms: 5000
         max.block.ms: 5000
@@ -35,6 +37,9 @@ spring:
       host: ${REDIS_HOST:localhost}
       timeout: 500ms
 payflow:
+  worker-concurrency: ${WORKER_CONCURRENCY:4}
+  webhook-concurrency: ${WEBHOOK_CONCURRENCY:4}
+  outbox-batch-size: ${OUTBOX_BATCH_SIZE:128}
   profiling: ${PROFILE_ENABLED:false}
   jwt-secret: ${JWT_SECRET:local-only-signing-secret-at-least-32-bytes-change-before-sharing}
   workers: ${WORKERS_ENABLED:true}

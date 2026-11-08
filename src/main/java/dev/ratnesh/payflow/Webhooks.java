@@ -16,25 +16,43 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 @RestController
-public class Webhooks {
+public class Webhooks implements AutoCloseable {
   final Payments p;
   final String secret, url;
   final boolean enabled;
+  final BoundedTasks deliveries;
   final HttpClient http =
       HttpClient.newBuilder()
           .connectTimeout(Duration.ofSeconds(2))
           .followRedirects(HttpClient.Redirect.NEVER)
           .build();
 
+  @org.springframework.beans.factory.annotation.Autowired
   public Webhooks(
       Payments p,
       @Value("${payflow.webhook-secret}") String secret,
       @Value("${payflow.webhook-url}") String url,
-      @Value("${payflow.workers:true}") boolean enabled) {
+      @Value("${payflow.workers:true}") boolean enabled,
+      @Value("${payflow.webhook-concurrency:4}") int concurrency) {
     this.p = p;
     this.secret = secret;
     this.url = url;
     this.enabled = enabled;
+    deliveries = new BoundedTasks("payflow-webhook", concurrency);
+  }
+
+  public Webhooks(Payments p, String secret, String url, boolean enabled) {
+    this(p, secret, url, enabled, 4);
+  }
+
+  int inFlight() {
+    return deliveries.inFlight();
+  }
+
+  @jakarta.annotation.PreDestroy
+  @Override
+  public void close() {
+    deliveries.close();
   }
 
   public String sign(String timestamp, String body) {
@@ -113,43 +131,47 @@ public class Webhooks {
         });
   }
 
-  @Scheduled(fixedDelay = 200)
+  @Scheduled(fixedDelayString = "${payflow.webhook-poll-ms:10}")
   public void deliver() {
     if (!enabled) return;
-    var claims =
-        p.tx.execute(
-            s ->
-                p.db.queryForList(
-                    "UPDATE webhook_delivery SET next_attempt=now()+interval '30"
-                        + " seconds',token=token+1,attempts=attempts+1 WHERE event_id IN (SELECT"
-                        + " event_id FROM webhook_delivery WHERE NOT delivered AND"
-                        + " next_attempt<=now() AND attempts<20 LIMIT 16 FOR UPDATE SKIP LOCKED)"
-                        + " RETURNING *"));
-    for (var row : claims) {
-      boolean ok = false;
-      try {
-        String ts = Long.toString(Instant.now().getEpochSecond()),
-            body = row.get("payload").toString();
-        var request =
-            HttpRequest.newBuilder(URI.create(url))
-                .timeout(Duration.ofSeconds(2))
-                .header("Content-Type", "application/json")
-                .header("X-Timestamp", ts)
-                .header("X-Signature", sign(ts, body))
-                .POST(HttpRequest.BodyPublishers.ofString(body))
-                .build();
-        int code = http.send(request, HttpResponse.BodyHandlers.discarding()).statusCode();
-        ok = code >= 200 && code < 300;
-      } catch (Exception ignored) {
-      }
-      long seconds = Math.min(3600, 1L << Math.min(12, ((Number) row.get("attempts")).intValue()));
-      p.db.update(
-          "UPDATE webhook_delivery SET delivered=?,next_attempt=now()+(? * interval '1 second')"
-              + " WHERE event_id=? AND token=?",
-          ok,
-          seconds,
-          row.get("event_id"),
-          row.get("token"));
+    deliveries.dispatch(
+        capacity ->
+            p.tx.execute(
+                s ->
+                    p.db.queryForList(
+                        "UPDATE webhook_delivery SET next_attempt=now()+interval '30"
+                            + " seconds',token=token+1,attempts=attempts+1 WHERE event_id IN"
+                            + " (SELECT event_id FROM webhook_delivery WHERE NOT delivered AND"
+                            + " next_attempt<=now() AND attempts<20 LIMIT ? FOR UPDATE SKIP LOCKED)"
+                            + " RETURNING *",
+                        capacity)),
+        this::sendDelivery);
+  }
+
+  private void sendDelivery(Map<String, Object> row) {
+    boolean ok = false;
+    try {
+      String ts = Long.toString(Instant.now().getEpochSecond()),
+          body = row.get("payload").toString();
+      var request =
+          HttpRequest.newBuilder(URI.create(url))
+              .timeout(Duration.ofSeconds(2))
+              .header("Content-Type", "application/json")
+              .header("X-Timestamp", ts)
+              .header("X-Signature", sign(ts, body))
+              .POST(HttpRequest.BodyPublishers.ofString(body))
+              .build();
+      int code = http.send(request, HttpResponse.BodyHandlers.discarding()).statusCode();
+      ok = code >= 200 && code < 300;
+    } catch (Exception ignored) {
     }
+    long seconds = Math.min(3600, 1L << Math.min(12, ((Number) row.get("attempts")).intValue()));
+    p.db.update(
+        "UPDATE webhook_delivery SET delivered=?,next_attempt=now()+(? * interval '1 second')"
+            + " WHERE event_id=? AND token=?",
+        ok,
+        seconds,
+        row.get("event_id"),
+        row.get("token"));
   }
 }

@@ -14,7 +14,12 @@ import org.testcontainers.junit.jupiter.*;
 
 @Tag("integration")
 @Testcontainers
-@SpringBootTest(properties = {"payflow.workers=false", "spring.kafka.listener.auto-startup=false", "payflow.profiling=true"})
+@SpringBootTest(
+    properties = {
+      "payflow.workers=false",
+      "spring.kafka.listener.auto-startup=false",
+      "payflow.profiling=true"
+    })
 class RecoveryTest {
   @Container
   static PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>("postgres:17.6-alpine");
@@ -191,12 +196,18 @@ class RecoveryTest {
               "http://127.0.0.1:" + server.getAddress().getPort() + "/hook",
               true);
       delivery.deliver();
+      org.awaitility.Awaitility.await()
+          .atMost(java.time.Duration.ofSeconds(10))
+          .until(() -> delivery.inFlight() == 0);
       assertFalse(
           p.db.queryForObject(
               "SELECT delivered FROM webhook_delivery WHERE event_id=?", Boolean.class, event));
       p.db.update("UPDATE webhook_delivery SET next_attempt=now() WHERE event_id=?", event);
       code.set(200);
       delivery.deliver();
+      org.awaitility.Awaitility.await()
+          .atMost(java.time.Duration.ofSeconds(10))
+          .until(() -> delivery.inFlight() == 0);
       assertTrue(
           p.db.queryForObject(
               "SELECT delivered FROM webhook_delivery WHERE event_id=?", Boolean.class, event));
@@ -204,6 +215,7 @@ class RecoveryTest {
           1,
           p.db.queryForObject(
               "SELECT count(*) FROM journal WHERE business_id=?", Integer.class, payment));
+      delivery.close();
     } finally {
       server.stop(0);
     }

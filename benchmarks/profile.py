@@ -18,7 +18,7 @@ def inventory(path):
  for name,args in [('cpu',['lscpu']),('memory',['free','-b']),('kernel',['uname','-a']),('docker',['docker','version'])]:
   (path/(name+'.txt')).write_text(command(*args)+'\n')
  (path/'commit.txt').write_text(command('git','rev-parse','HEAD')+'\n')
- (path/'configuration.json').write_text(json.dumps({key:os.environ.get(key,default) for key,default in [('DB_POOL_SIZE','10'),('PROFILE_ENABLED','true'),('WORKER_CONCURRENCY','1'),('OUTBOX_BATCH_SIZE','64'),('LAZY_INIT','false')]},indent=2))
+ (path/'configuration.json').write_text(json.dumps({key:os.environ.get(key,default) for key,default in [('DB_POOL_SIZE','10'),('PROFILE_ENABLED','true'),('WORKER_CONCURRENCY','4'),('WEBHOOK_CONCURRENCY','4'),('OUTBOX_BATCH_SIZE','128'),('LAZY_INIT','false')]},indent=2))
 def snapshot(operator):
  result={'time':time.time(),'metrics':{},'status':http('/ops/status',operator)}
  for name in ['payflow.pool.acquire','payflow.sql.execute','payflow.db.commit','payflow.db.rollback','hikaricp.connections.active','hikaricp.connections.pending','process.cpu.usage','system.cpu.usage','http.server.requests']:
