@@ -1,0 +1,313 @@
+{
+  "sampledTopFrames": [
+    [
+      "sun/nio/ch/Net.poll",
+      623
+    ],
+    [
+      "sun/nio/ch/EPoll.wait",
+      615
+    ],
+    [
+      "sun/nio/ch/Net.accept",
+      145
+    ],
+    [
+      "sun/nio/ch/SocketDispatcher.write0",
+      77
+    ],
+    [
+      "sun/nio/ch/SocketDispatcher.read0",
+      23
+    ],
+    [
+      "java/util/HashMap.getNode",
+      14
+    ],
+    [
+      "sun/nio/ch/EventFD.set0",
+      12
+    ],
+    [
+      "java/util/concurrent/ConcurrentHashMap.get",
+      11
+    ],
+    [
+      "java/util/regex/Pattern$Start.match",
+      10
+    ],
+    [
+      "java/util/ComparableTimSort.countRunAndMakeAscending",
+      8
+    ],
+    [
+      "java/util/regex/Pattern$BmpCharPropertyGreedy.match",
+      7
+    ],
+    [
+      "sun/nio/ch/SocketDispatcher.writev0",
+      7
+    ],
+    [
+      "java/util/concurrent/ConcurrentHashMap.putVal",
+      7
+    ],
+    [
+      "java/util/HashMap.resize",
+      4
+    ],
+    [
+      "java/util/ArrayList.grow",
+      4
+    ],
+    [
+      "io/micrometer/core/instrument/Tags.tagsEqual",
+      4
+    ],
+    [
+      "io/micrometer/common/KeyValues.toKeyValues",
+      4
+    ],
+    [
+      "java/lang/reflect/AccessibleObject.slowVerifyAccess",
+      4
+    ],
+    [
+      "java/util/regex/Pattern$CharPropertyGreedy.match",
+      4
+    ],
+    [
+      "ch/qos/logback/classic/LoggerContext.getTurboFilterChainDecision_0_3OrMore",
+      4
+    ],
+    [
+      "java/util/Arrays.sort",
+      4
+    ],
+    [
+      "java/lang/String.encodeUTF8",
+      3
+    ],
+    [
+      "org/postgresql/core/v3/QueryExecutorImpl.sendBind",
+      3
+    ],
+    [
+      "java/util/ComparableTimSort.binarySort",
+      3
+    ],
+    [
+      "io/micrometer/observation/SimpleObservation.notifyOnEvent",
+      3
+    ],
+    [
+      "org/apache/tomcat/util/http/MimeHeaders.values",
+      3
+    ],
+    [
+      "java/nio/HeapByteBuffer.put",
+      3
+    ],
+    [
+      "java/util/regex/Pattern.sequence",
+      3
+    ],
+    [
+      "java/util/regex/Pattern$BmpCharProperty.match",
+      2
+    ],
+    [
+      "io.micrometer.core.instrument.search.Search$$Lambda/0x00007f0e96ab8000.test",
+      2
+    ]
+  ],
+  "cpuLoadSamples": [
+    {
+      "startTime": "2026-11-08T07:18:09.380055797Z",
+      "jvmUser": 0.083709724,
+      "jvmSystem": 0.06455887,
+      "machineTotal": 0.49292383
+    },
+    {
+      "startTime": "2026-11-08T07:18:10.381097483Z",
+      "jvmUser": 0.1627907,
+      "jvmSystem": 0.087855294,
+      "machineTotal": 0.8530928
+    },
+    {
+      "startTime": "2026-11-08T07:18:11.387719701Z",
+      "jvmUser": 0.1919192,
+      "jvmSystem": 0.11868687,
+      "machineTotal": 0.9240506
+    },
+    {
+      "startTime": "2026-11-08T07:18:12.392418888Z",
+      "jvmUser": 0.19181585,
+      "jvmSystem": 0.12276215,
+      "machineTotal": 0.89514065
+    },
+    {
+      "startTime": "2026-11-08T07:18:13.396258926Z",
+      "jvmUser": 0.18367347,
+      "jvmSystem": 0.11989796,
+      "machineTotal": 0.89540815
+    },
+    {
+      "startTime": "2026-11-08T07:18:14.400414761Z",
+      "jvmUser": 0.18781726,
+      "jvmSystem": 0.11675127,
+      "machineTotal": 0.9213198
+    },
+    {
+      "startTime": "2026-11-08T07:18:15.403206824Z",
+      "jvmUser": 0.18829517,
+      "jvmSystem": 0.12722646,
+      "machineTotal": 0.90585244
+    },
+    {
+      "startTime": "2026-11-08T07:18:16.407389222Z",
+      "jvmUser": 0.17857143,
+      "jvmSystem": 0.11989796,
+      "machineTotal": 0.90816325
+    },
+    {
+      "startTime": "2026-11-08T07:18:17.413911742Z",
+      "jvmUser": 0.20050761,
+      "jvmSystem": 0.11675127,
+      "machineTotal": 0.9141414
+    },
+    {
+      "startTime": "2026-11-08T07:18:18.416987328Z",
+      "jvmUser": 0.19794345,
+      "jvmSystem": 0.11568123,
+      "machineTotal": 0.89405686
+    },
+    {
+      "startTime": "2026-11-08T07:18:19.420775714Z",
+      "jvmUser": 0.18527919,
+      "jvmSystem": 0.11167513,
+      "machineTotal": 0.9137056
+    },
+    {
+      "startTime": "2026-11-08T07:18:20.424142212Z",
+      "jvmUser": 0.17857143,
+      "jvmSystem": 0.125,
+      "machineTotal": 0.9158163
+    },
+    {
+      "startTime": "2026-11-08T07:18:21.434454775Z",
+      "jvmUser": 0.19543147,
+      "jvmSystem": 0.11928934,
+      "machineTotal": 0.90379745
+    },
+    {
+      "startTime": "2026-11-08T07:18:22.444460174Z",
+      "jvmUser": 0.20050125,
+      "jvmSystem": 0.117794484,
+      "machineTotal": 0.919598
+    },
+    {
+      "startTime": "2026-11-08T07:18:23.446027748Z",
+      "jvmUser": 0.19132653,
+      "jvmSystem": 0.10969388,
+      "machineTotal": 0.9158163
+    },
+    {
+      "startTime": "2026-11-08T07:18:24.447540363Z",
+      "jvmUser": 0.18481013,
+      "jvmSystem": 0.12405063,
+      "machineTotal": 0.9012658
+    },
+    {
+      "startTime": "2026-11-08T07:18:25.450984271Z",
+      "jvmUser": 0.18575063,
+      "jvmSystem": 0.114503816,
+      "machineTotal": 0.91857505
+    },
+    {
+      "startTime": "2026-11-08T07:18:26.457654312Z",
+      "jvmUser": 0.19240506,
+      "jvmSystem": 0.11139241,
+      "machineTotal": 0.9265823
+    },
+    {
+      "startTime": "2026-11-08T07:18:27.461110606Z",
+      "jvmUser": 0.18877551,
+      "jvmSystem": 0.12755102,
+      "machineTotal": 0.89540815
+    },
+    {
+      "startTime": "2026-11-08T07:18:28.464356971Z",
+      "jvmUser": 0.20101781,
+      "jvmSystem": 0.114503816,
+      "machineTotal": 0.90585244
+    },
+    {
+      "startTime": "2026-11-08T07:18:29.467604665Z",
+      "jvmUser": 0.18274112,
+      "jvmSystem": 0.1142132,
+      "machineTotal": 0.93401015
+    },
+    {
+      "startTime": "2026-11-08T07:18:30.469065391Z",
+      "jvmUser": 0.2,
+      "jvmSystem": 0.12307692,
+      "machineTotal": 0.8923077
+    },
+    {
+      "startTime": "2026-11-08T07:18:31.472369055Z",
+      "jvmUser": 0.18434343,
+      "jvmSystem": 0.11868687,
+      "machineTotal": 0.9292929
+    },
+    {
+      "startTime": "2026-11-08T07:18:32.474393107Z",
+      "jvmUser": 0.17692308,
+      "jvmSystem": 0.12051282,
+      "machineTotal": 0.8974359
+    },
+    {
+      "startTime": "2026-11-08T07:18:33.476357407Z",
+      "jvmUser": 0.19948849,
+      "jvmSystem": 0.11764706,
+      "machineTotal": 0.88746804
+    },
+    {
+      "startTime": "2026-11-08T07:18:34.481270394Z",
+      "jvmUser": 0.18112245,
+      "jvmSystem": 0.11989796,
+      "machineTotal": 0.9285714
+    },
+    {
+      "startTime": "2026-11-08T07:18:35.498174938Z",
+      "jvmUser": 0.1775,
+      "jvmSystem": 0.1125,
+      "machineTotal": 0.9275
+    },
+    {
+      "startTime": "2026-11-08T07:18:36.501626023Z",
+      "jvmUser": 0.16666667,
+      "jvmSystem": 0.10606061,
+      "machineTotal": 0.9570707
+    },
+    {
+      "startTime": "2026-11-08T07:18:37.503663264Z",
+      "jvmUser": 0.17336683,
+      "jvmSystem": 0.09547739,
+      "machineTotal": 0.96733665
+    },
+    {
+      "startTime": "2026-11-08T07:18:38.506460801Z",
+      "jvmUser": 0.18987341,
+      "jvmSystem": 0.12911393,
+      "machineTotal": 0.9164557
+    },
+    {
+      "startTime": "2026-11-08T07:18:39.508718377Z",
+      "jvmUser": 0.19948849,
+      "jvmSystem": 0.12531969,
+      "machineTotal": 0.88746804
+    }
+  ],
+  "interpretation": "stack sample frequency, not wall-time percentage"
+}

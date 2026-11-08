@@ -1,0 +1,325 @@
+{
+  "sampledTopFrames": [
+    [
+      "sun/nio/ch/EPoll.wait",
+      359
+    ],
+    [
+      "sun/nio/ch/Net.poll",
+      287
+    ],
+    [
+      "sun/nio/ch/SocketDispatcher.write0",
+      168
+    ],
+    [
+      "sun/nio/ch/Net.accept",
+      102
+    ],
+    [
+      "java/lang/Thread.yield0",
+      50
+    ],
+    [
+      "sun/nio/ch/EventFD.set0",
+      28
+    ],
+    [
+      "sun/nio/ch/SocketDispatcher.read0",
+      25
+    ],
+    [
+      "java/util/HashMap.getNode",
+      20
+    ],
+    [
+      "java/util/concurrent/ConcurrentHashMap.get",
+      19
+    ],
+    [
+      "java/util/concurrent/ConcurrentHashMap.putVal",
+      9
+    ],
+    [
+      "java/util/ArrayList.grow",
+      9
+    ],
+    [
+      "java/lang/invoke/DirectMethodHandle.allocateInstance",
+      8
+    ],
+    [
+      "com/fasterxml/jackson/databind/deser/BeanDeserializer._deserializeUsingPropertyBased",
+      6
+    ],
+    [
+      "sun/nio/ch/SocketDispatcher.writev0",
+      6
+    ],
+    [
+      "java/lang/AbstractStringBuilder.ensureCapacityInternal",
+      6
+    ],
+    [
+      "java/util/regex/Matcher.match",
+      6
+    ],
+    [
+      "java/lang/ThreadLocal$ThreadLocalMap.getEntry",
+      6
+    ],
+    [
+      "io/micrometer/observation/SimpleObservation.notifyOnEvent",
+      6
+    ],
+    [
+      "java/util/concurrent/ConcurrentHashMap.addCount",
+      5
+    ],
+    [
+      "java/lang/Class.getComponentType",
+      5
+    ],
+    [
+      "java/lang/StringConcatHelper.simpleConcat",
+      5
+    ],
+    [
+      "java/util/regex/Pattern.lambda$union$4",
+      5
+    ],
+    [
+      "java/lang/String.indexOf",
+      5
+    ],
+    [
+      "java/util/regex/Pattern$CharPropertyGreedy.match",
+      5
+    ],
+    [
+      "java/lang/Class.getName",
+      5
+    ],
+    [
+      "org/springframework/web/servlet/mvc/method/annotation/AbstractMessageConverterMethodArgumentResolver.readWithMessageConverters",
+      5
+    ],
+    [
+      "java/lang/invoke/Invokers.checkCustomized",
+      5
+    ],
+    [
+      "java/lang/String.equals",
+      5
+    ],
+    [
+      "java/util/Arrays.sort",
+      5
+    ],
+    [
+      "java/util/concurrent/locks/ReentrantLock$Sync.lock",
+      4
+    ]
+  ],
+  "cpuLoadSamples": [
+    {
+      "startTime": "2026-11-08T07:15:29.855748172Z",
+      "jvmUser": 0.0,
+      "jvmSystem": 0.0,
+      "machineTotal": 0.0
+    },
+    {
+      "startTime": "2026-11-08T07:15:30.856698625Z",
+      "jvmUser": 0.37027708,
+      "jvmSystem": 0.010075566,
+      "machineTotal": 0.6095718
+    },
+    {
+      "startTime": "2026-11-08T07:15:31.859462100Z",
+      "jvmUser": 0.4910486,
+      "jvmSystem": 0.023017902,
+      "machineTotal": 0.8976982
+    },
+    {
+      "startTime": "2026-11-08T07:15:32.861433137Z",
+      "jvmUser": 0.56675065,
+      "jvmSystem": 0.047858942,
+      "machineTotal": 0.87909317
+    },
+    {
+      "startTime": "2026-11-08T07:15:33.870778499Z",
+      "jvmUser": 0.5920398,
+      "jvmSystem": 0.049751244,
+      "machineTotal": 0.96268654
+    },
+    {
+      "startTime": "2026-11-08T07:15:34.900715256Z",
+      "jvmUser": 0.62682927,
+      "jvmSystem": 0.05121951,
+      "machineTotal": 0.95853657
+    },
+    {
+      "startTime": "2026-11-08T07:15:35.923033657Z",
+      "jvmUser": 0.63480395,
+      "jvmSystem": 0.05882353,
+      "machineTotal": 0.9632353
+    },
+    {
+      "startTime": "2026-11-08T07:15:36.956315982Z",
+      "jvmUser": 0.61893207,
+      "jvmSystem": 0.0776699,
+      "machineTotal": 0.9660194
+    },
+    {
+      "startTime": "2026-11-08T07:15:37.985641297Z",
+      "jvmUser": 0.56479216,
+      "jvmSystem": 0.06356968,
+      "machineTotal": 0.96821517
+    },
+    {
+      "startTime": "2026-11-08T07:15:39.016313224Z",
+      "jvmUser": 0.61165047,
+      "jvmSystem": 0.07038835,
+      "machineTotal": 0.96359223
+    },
+    {
+      "startTime": "2026-11-08T07:15:40.052969352Z",
+      "jvmUser": 0.5970874,
+      "jvmSystem": 0.067961164,
+      "machineTotal": 0.96359223
+    },
+    {
+      "startTime": "2026-11-08T07:15:41.080021457Z",
+      "jvmUser": 0.5330073,
+      "jvmSystem": 0.07579462,
+      "machineTotal": 0.88753057
+    },
+    {
+      "startTime": "2026-11-08T07:15:42.095704087Z",
+      "jvmUser": 0.5955335,
+      "jvmSystem": 0.07692308,
+      "machineTotal": 0.96526057
+    },
+    {
+      "startTime": "2026-11-08T07:15:43.116616661Z",
+      "jvmUser": 0.5123153,
+      "jvmSystem": 0.07881773,
+      "machineTotal": 0.9778325
+    },
+    {
+      "startTime": "2026-11-08T07:15:44.132703956Z",
+      "jvmUser": 0.5445545,
+      "jvmSystem": 0.08415841,
+      "machineTotal": 0.9826733
+    },
+    {
+      "startTime": "2026-11-08T07:15:45.154124681Z",
+      "jvmUser": 0.5147059,
+      "jvmSystem": 0.075980395,
+      "machineTotal": 0.9877451
+    },
+    {
+      "startTime": "2026-11-08T07:15:46.168831744Z",
+      "jvmUser": 0.51358026,
+      "jvmSystem": 0.07901235,
+      "machineTotal": 0.99012345
+    },
+    {
+      "startTime": "2026-11-08T07:15:47.195844178Z",
+      "jvmUser": 0.5243902,
+      "jvmSystem": 0.085365854,
+      "machineTotal": 0.98292685
+    },
+    {
+      "startTime": "2026-11-08T07:15:48.212201360Z",
+      "jvmUser": 0.4679803,
+      "jvmSystem": 0.07881773,
+      "machineTotal": 0.9876847
+    },
+    {
+      "startTime": "2026-11-08T07:15:49.220922550Z",
+      "jvmUser": 0.4950249,
+      "jvmSystem": 0.094527364,
+      "machineTotal": 0.98759305
+    },
+    {
+      "startTime": "2026-11-08T07:15:50.235849403Z",
+      "jvmUser": 0.4729064,
+      "jvmSystem": 0.0862069,
+      "machineTotal": 0.9851852
+    },
+    {
+      "startTime": "2026-11-08T07:15:51.264541758Z",
+      "jvmUser": 0.4914842,
+      "jvmSystem": 0.085158154,
+      "machineTotal": 0.98540145
+    },
+    {
+      "startTime": "2026-11-08T07:15:52.271627749Z",
+      "jvmUser": 0.4937656,
+      "jvmSystem": 0.09975062,
+      "machineTotal": 0.9875312
+    },
+    {
+      "startTime": "2026-11-08T07:15:53.283798391Z",
+      "jvmUser": 0.45544556,
+      "jvmSystem": 0.08663366,
+      "machineTotal": 0.98762375
+    },
+    {
+      "startTime": "2026-11-08T07:15:54.299481967Z",
+      "jvmUser": 0.491358,
+      "jvmSystem": 0.096296296,
+      "machineTotal": 0.9876543
+    },
+    {
+      "startTime": "2026-11-08T07:15:55.306340524Z",
+      "jvmUser": 0.43890274,
+      "jvmSystem": 0.09476309,
+      "machineTotal": 0.9900249
+    },
+    {
+      "startTime": "2026-11-08T07:15:56.326183948Z",
+      "jvmUser": 0.4852941,
+      "jvmSystem": 0.085784316,
+      "machineTotal": 0.9852941
+    },
+    {
+      "startTime": "2026-11-08T07:15:57.332001603Z",
+      "jvmUser": 0.47014925,
+      "jvmSystem": 0.08457711,
+      "machineTotal": 0.9925373
+    },
+    {
+      "startTime": "2026-11-08T07:15:58.341110777Z",
+      "jvmUser": 0.42431763,
+      "jvmSystem": 0.0719603,
+      "machineTotal": 0.9950372
+    },
+    {
+      "startTime": "2026-11-08T07:15:59.351188899Z",
+      "jvmUser": 0.47890818,
+      "jvmSystem": 0.084367245,
+      "machineTotal": 0.98263025
+    },
+    {
+      "startTime": "2026-11-08T07:16:00.356122115Z",
+      "jvmUser": 0.43142146,
+      "jvmSystem": 0.07730673,
+      "machineTotal": 0.99501246
+    },
+    {
+      "startTime": "2026-11-08T07:16:01.363160012Z",
+      "jvmUser": 0.4875,
+      "jvmSystem": 0.0975,
+      "machineTotal": 0.9900249
+    },
+    {
+      "startTime": "2026-11-08T07:16:02.381043501Z",
+      "jvmUser": 0.43209878,
+      "jvmSystem": 0.05185185,
+      "machineTotal": 0.990099
+    }
+  ],
+  "interpretation": "stack sample frequency, not wall-time percentage"
+}
