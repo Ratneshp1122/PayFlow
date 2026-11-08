@@ -1,0 +1,219 @@
+{
+  "sampledTopFrames": [
+    [
+      "sun/nio/ch/EPoll.wait",
+      461
+    ],
+    [
+      "sun/nio/ch/Net.poll",
+      215
+    ],
+    [
+      "sun/nio/ch/Net.accept",
+      96
+    ],
+    [
+      "sun/nio/ch/SocketDispatcher.write0",
+      6
+    ],
+    [
+      "sun/nio/ch/SocketDispatcher.read0",
+      3
+    ],
+    [
+      "sun/nio/ch/EventFD.set0",
+      2
+    ],
+    [
+      "sun/nio/ch/Net.shutdown",
+      2
+    ],
+    [
+      "java/util/concurrent/ConcurrentHashMap.get",
+      2
+    ],
+    [
+      "org/springframework/boot/loader/net/protocol/jar/JarFileUrlKey.equals",
+      2
+    ],
+    [
+      "org/springframework/security/web/ObservationFilterChainDecorator.wrap",
+      1
+    ],
+    [
+      "io/micrometer/core/instrument/MeterRegistry.registerMeterIfNecessary",
+      1
+    ],
+    [
+      "com/nimbusds/jose/shaded/gson/reflect/TypeToken.getParameterized",
+      1
+    ],
+    [
+      "io/micrometer/core/instrument/Tags.iterator",
+      1
+    ],
+    [
+      "org/springframework/kafka/listener/KafkaMessageListenerContainer$ListenerConsumer.doInvokeRecordListener",
+      1
+    ],
+    [
+      "org/postgresql/util/internal/PgBufferedOutputStream.flush",
+      1
+    ],
+    [
+      "java/util/regex/Pattern$BmpCharProperty.match",
+      1
+    ],
+    [
+      "org/postgresql/jdbc/PgResultSet.getDefaultCalendar",
+      1
+    ],
+    [
+      "java/util/regex/Pattern$BmpCharPropertyGreedy.match",
+      1
+    ],
+    [
+      "org/postgresql/jdbc/PgStatement.executeInternal",
+      1
+    ],
+    [
+      "org.apache.kafka.common.requests.FetchResponse$$Lambda/0x00007f307eadd3d0.accept",
+      1
+    ],
+    [
+      "ch/qos/logback/classic/LoggerContext.getTurboFilterChainDecision_0_3OrMore",
+      1
+    ],
+    [
+      "jdk/internal/net/http/Exchange.readBodyAsync",
+      1
+    ],
+    [
+      "org/postgresql/core/v3/QueryExecutorImpl.sendQuery",
+      1
+    ],
+    [
+      "sun/security/provider/SHA.implDigest",
+      1
+    ],
+    [
+      "org/apache/kafka/common/utils/ImplicitLinkedHashCollection$ImplicitLinkedHashCollectionIterator.next",
+      1
+    ],
+    [
+      "java/util/HashMap.get",
+      1
+    ],
+    [
+      "java/util/regex/Pattern.atom",
+      1
+    ],
+    [
+      "org/springframework/web/servlet/DispatcherServlet.getHandler",
+      1
+    ],
+    [
+      "java/lang/invoke/Invokers.checkCustomized",
+      1
+    ]
+  ],
+  "cpuLoadSamples": [
+    {
+      "startTime": "2026-11-08T07:05:27.710641751Z",
+      "jvmUser": 0.024611099,
+      "jvmSystem": 0.01007662,
+      "machineTotal": 0.094125845
+    },
+    {
+      "startTime": "2026-11-08T07:05:28.711265295Z",
+      "jvmUser": 0.06887755,
+      "jvmSystem": 0.030612245,
+      "machineTotal": 0.36386767
+    },
+    {
+      "startTime": "2026-11-08T07:05:29.713234470Z",
+      "jvmUser": 0.08974359,
+      "jvmSystem": 0.04871795,
+      "machineTotal": 0.47948718
+    },
+    {
+      "startTime": "2026-11-08T07:05:30.714246349Z",
+      "jvmUser": 0.0961039,
+      "jvmSystem": 0.04935065,
+      "machineTotal": 0.5220779
+    },
+    {
+      "startTime": "2026-11-08T07:05:31.715266776Z",
+      "jvmUser": 0.08268734,
+      "jvmSystem": 0.04909561,
+      "machineTotal": 0.48062015
+    },
+    {
+      "startTime": "2026-11-08T07:05:32.716866603Z",
+      "jvmUser": 0.093023255,
+      "jvmSystem": 0.04909561,
+      "machineTotal": 0.4792746
+    },
+    {
+      "startTime": "2026-11-08T07:05:33.718095063Z",
+      "jvmUser": 0.0749354,
+      "jvmSystem": 0.054263566,
+      "machineTotal": 0.47803617
+    },
+    {
+      "startTime": "2026-11-08T07:05:34.719015521Z",
+      "jvmUser": 0.10852713,
+      "jvmSystem": 0.04909561,
+      "machineTotal": 0.57622737
+    },
+    {
+      "startTime": "2026-11-08T07:05:35.719771370Z",
+      "jvmUser": 0.07512953,
+      "jvmSystem": 0.054404143,
+      "machineTotal": 0.52590674
+    },
+    {
+      "startTime": "2026-11-08T07:05:36.720374921Z",
+      "jvmUser": 0.07772021,
+      "jvmSystem": 0.046632126,
+      "machineTotal": 0.46891192
+    },
+    {
+      "startTime": "2026-11-08T07:05:37.721123563Z",
+      "jvmUser": 0.074742265,
+      "jvmSystem": 0.04639175,
+      "machineTotal": 0.43814433
+    },
+    {
+      "startTime": "2026-11-08T07:05:38.722391053Z",
+      "jvmUser": 0.06393862,
+      "jvmSystem": 0.046035804,
+      "machineTotal": 0.39130434
+    },
+    {
+      "startTime": "2026-11-08T07:05:39.724225269Z",
+      "jvmUser": 0.07329843,
+      "jvmSystem": 0.04973822,
+      "machineTotal": 0.460733
+    },
+    {
+      "startTime": "2026-11-08T07:05:40.724895733Z",
+      "jvmUser": 0.1484375,
+      "jvmSystem": 0.057291668,
+      "machineTotal": 0.5442708
+    },
+    {
+      "startTime": "2026-11-08T07:05:41.725807193Z",
+      "jvmUser": 0.12403101,
+      "jvmSystem": 0.051679585,
+      "machineTotal": 0.52196383
+    },
+    {
+      "startTime": "2026-11-08T07:05:42.726579124Z",
+      "jvmUser": 0.12531969,
+      "jvmSystem": 0.051150896,
+      "machineTotal": 0.57033247
+    }
+  ],
+  "interpretation": "stack sample frequency, not wall-time percentage"
+}

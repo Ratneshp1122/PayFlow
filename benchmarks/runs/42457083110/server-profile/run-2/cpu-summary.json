@@ -1,0 +1,223 @@
+{
+  "sampledTopFrames": [
+    [
+      "sun/nio/ch/EPoll.wait",
+      450
+    ],
+    [
+      "sun/nio/ch/Net.poll",
+      198
+    ],
+    [
+      "sun/nio/ch/Net.accept",
+      96
+    ],
+    [
+      "sun/nio/ch/SocketDispatcher.write0",
+      19
+    ],
+    [
+      "java/util/concurrent/ConcurrentHashMap.get",
+      6
+    ],
+    [
+      "sun/nio/ch/EventFD.set0",
+      3
+    ],
+    [
+      "sun/nio/ch/EPoll.ctl",
+      3
+    ],
+    [
+      "io/micrometer/core/instrument/ImmutableTag.equals",
+      2
+    ],
+    [
+      "sun/nio/ch/IOUtil.drain",
+      2
+    ],
+    [
+      "sun/nio/ch/SocketDispatcher.writev0",
+      2
+    ],
+    [
+      "sun/nio/ch/SocketDispatcher.read0",
+      2
+    ],
+    [
+      "org/springframework/util/MultiValueMapAdapter.get",
+      1
+    ],
+    [
+      "java/util/concurrent/ConcurrentHashMap.clear",
+      1
+    ],
+    [
+      "org/apache/tomcat/util/http/ValuesEnumerator.findNext",
+      1
+    ],
+    [
+      "java/lang/StringLatin1.lastIndexOf",
+      1
+    ],
+    [
+      "io/micrometer/common/KeyValues.and",
+      1
+    ],
+    [
+      "org/springframework/boot/loader/net/protocol/jar/JarFileUrlKey.equals",
+      1
+    ],
+    [
+      "org/springframework/core/ResolvableType.forMethodParameter",
+      1
+    ],
+    [
+      "io/netty/buffer/AbstractByteBuf.writeBytes",
+      1
+    ],
+    [
+      "sun/nio/ch/UnixDispatcher.close0",
+      1
+    ],
+    [
+      "org/apache/tomcat/util/threads/ThreadPoolExecutor.execute",
+      1
+    ],
+    [
+      "java/util/Map.ofEntries",
+      1
+    ],
+    [
+      "sun/nio/ch/Net.getIntOption0",
+      1
+    ],
+    [
+      "jdk/internal/net/http/MultiExchange.lambda$responseAsync0$4",
+      1
+    ],
+    [
+      "java/util/regex/Pattern.RemoveQEQuoting",
+      1
+    ],
+    [
+      "jdk/internal/misc/VM.getNanoTimeAdjustment",
+      1
+    ],
+    [
+      "org/apache/catalina/core/ApplicationFilterChain.doFilter",
+      1
+    ],
+    [
+      "org/springframework/web/servlet/handler/HandlerMappingIntrospector$AttributesPreservingRequest.removeAttribute",
+      1
+    ],
+    [
+      "io/micrometer/core/instrument/MeterRegistry.registerMeterIfNecessary",
+      1
+    ],
+    [
+      "java/lang/String.equals",
+      1
+    ]
+  ],
+  "cpuLoadSamples": [
+    {
+      "startTime": "2026-11-08T07:04:18.318519756Z",
+      "jvmUser": 0.047327586,
+      "jvmSystem": 0.01125,
+      "machineTotal": 0.13581896
+    },
+    {
+      "startTime": "2026-11-08T07:04:19.318936406Z",
+      "jvmUser": 0.087403595,
+      "jvmSystem": 0.023136247,
+      "machineTotal": 0.3033419
+    },
+    {
+      "startTime": "2026-11-08T07:04:20.321038383Z",
+      "jvmUser": 0.14211886,
+      "jvmSystem": 0.03617571,
+      "machineTotal": 0.501292
+    },
+    {
+      "startTime": "2026-11-08T07:04:21.321806787Z",
+      "jvmUser": 0.14066496,
+      "jvmSystem": 0.028132992,
+      "machineTotal": 0.42711
+    },
+    {
+      "startTime": "2026-11-08T07:04:22.322832888Z",
+      "jvmUser": 0.20460358,
+      "jvmSystem": 0.046035804,
+      "machineTotal": 0.5498721
+    },
+    {
+      "startTime": "2026-11-08T07:04:23.324949732Z",
+      "jvmUser": 0.21994884,
+      "jvmSystem": 0.051150896,
+      "machineTotal": 0.65217394
+    },
+    {
+      "startTime": "2026-11-08T07:04:24.325771106Z",
+      "jvmUser": 0.16321243,
+      "jvmSystem": 0.051813472,
+      "machineTotal": 0.56735754
+    },
+    {
+      "startTime": "2026-11-08T07:04:25.326633487Z",
+      "jvmUser": 0.15183246,
+      "jvmSystem": 0.054973822,
+      "machineTotal": 0.57329845
+    },
+    {
+      "startTime": "2026-11-08T07:04:26.327532963Z",
+      "jvmUser": 0.20918368,
+      "jvmSystem": 0.048469387,
+      "machineTotal": 0.7244898
+    },
+    {
+      "startTime": "2026-11-08T07:04:27.328411832Z",
+      "jvmUser": 0.20051414,
+      "jvmSystem": 0.051413883,
+      "machineTotal": 0.6169666
+    },
+    {
+      "startTime": "2026-11-08T07:04:28.329201798Z",
+      "jvmUser": 0.17525773,
+      "jvmSystem": 0.05670103,
+      "machineTotal": 0.71649486
+    },
+    {
+      "startTime": "2026-11-08T07:04:29.330057794Z",
+      "jvmUser": 0.20360824,
+      "jvmSystem": 0.05412371,
+      "machineTotal": 0.6520619
+    },
+    {
+      "startTime": "2026-11-08T07:04:30.330969207Z",
+      "jvmUser": 0.26804122,
+      "jvmSystem": 0.05670103,
+      "machineTotal": 0.67783505
+    },
+    {
+      "startTime": "2026-11-08T07:04:31.331912018Z",
+      "jvmUser": 0.122715406,
+      "jvmSystem": 0.057441253,
+      "machineTotal": 0.4986945
+    },
+    {
+      "startTime": "2026-11-08T07:04:32.332839280Z",
+      "jvmUser": 0.13695091,
+      "jvmSystem": 0.051679585,
+      "machineTotal": 0.5142119
+    },
+    {
+      "startTime": "2026-11-08T07:04:33.333852881Z",
+      "jvmUser": 0.185567,
+      "jvmSystem": 0.04896907,
+      "machineTotal": 0.58247423
+    }
+  ],
+  "interpretation": "stack sample frequency, not wall-time percentage"
+}
