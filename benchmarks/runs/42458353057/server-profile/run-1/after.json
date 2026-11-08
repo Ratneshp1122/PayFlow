@@ -1,0 +1,374 @@
+{
+  "time": 1794122486.614052,
+  "metrics": {
+    "payflow.pool.acquire": {
+      "name": "payflow.pool.acquire",
+      "baseUnit": "seconds",
+      "measurements": [
+        {
+          "statistic": "COUNT",
+          "value": 13795.0
+        },
+        {
+          "statistic": "TOTAL_TIME",
+          "value": 70.87082432
+        },
+        {
+          "statistic": "MAX",
+          "value": 0.323216711
+        }
+      ],
+      "availableTags": [
+        {
+          "tag": "statement",
+          "values": [
+            "all"
+          ]
+        },
+        {
+          "tag": "outcome",
+          "values": [
+            "success"
+          ]
+        }
+      ]
+    },
+    "payflow.sql.execute": {
+      "name": "payflow.sql.execute",
+      "baseUnit": "seconds",
+      "measurements": [
+        {
+          "statistic": "COUNT",
+          "value": 37945.0
+        },
+        {
+          "statistic": "TOTAL_TIME",
+          "value": 61.918532306999985
+        },
+        {
+          "statistic": "MAX",
+          "value": 0.20335265
+        }
+      ],
+      "availableTags": [
+        {
+          "tag": "statement",
+          "values": [
+            "dfc16917cf93ac65",
+            "65f21e497af36d0c",
+            "16b0e7b45e113ff2",
+            "2f89527eb32258ff",
+            "e6c969bedd6db9b6",
+            "dde54dc9fbe5754d",
+            "7a171e726f61c788",
+            "6bd47cca632b34a8",
+            "71f9077a7ae08964",
+            "e2d63ae40965d3c3",
+            "39a27155903259e8",
+            "a96b8c990712a56b",
+            "817e549b5b018bbb",
+            "92b2d0469e3c582b",
+            "6a3e2539d2f6bbf1",
+            "71f888e99a83cf0b",
+            "0a9ac7a06533b4cf",
+            "0c667ce123cb0321",
+            "60a8d9e5931583da",
+            "fceb55541b673d46",
+            "22810f2f623935c0",
+            "075afaf98021ff57",
+            "a85715e73a3549c8",
+            "7687effb15cef6e5",
+            "09e8225e14ac4812",
+            "a8a9d538516ba32d",
+            "df1f1d15d442789a",
+            "6dbd22b0b9e98ef7",
+            "bac18a536d20517a",
+            "8fcfc01d5d75a6b6",
+            "eddd378605d56a09",
+            "3a8cefb404e8e1f2",
+            "76f93efba96b2d02",
+            "5824dd2230df8a71",
+            "1d6ac6f87413584f",
+            "d275858e52f4813b",
+            "707bd0ade4cd194b",
+            "e005b07c95689f79",
+            "0df7a14402febff6",
+            "6259449174453d20",
+            "e286a646201b3510",
+            "129cd084a7b74dbd",
+            "0a4b36446b96540a",
+            "df389668c6e32921",
+            "c1bb4304abfef118",
+            "59da4e478628bb5a",
+            "cfeded3712d3ef95",
+            "828c56c66fecddde",
+            "9981377812dc9654",
+            "e3e4c413fce8753d",
+            "6a7e3b2e8e23d821",
+            "35309ee6e38fa437",
+            "49065544d3820bf4",
+            "756680727942af00",
+            "fb8b62d7b25f715a",
+            "039d31d803511de2",
+            "dfcf01f8eb47c0ff",
+            "9d9d9d24b8a8f1ce",
+            "1e51c1fb66dc331e",
+            "8514de43cd7af0fd",
+            "26a676c5b8dde7ae",
+            "ccecc44270ced60f",
+            "1f733a356ea945b9",
+            "d15883cd5797ae53",
+            "8f5ff44fad064905",
+            "a6b460eedd871c98",
+            "07d8583005ab7026",
+            "11ff36fbfe69555c",
+            "0abac9994b32de59",
+            "a74d2d71359f86be",
+            "0624e7830e5ba41e",
+            "6c1241fcacbdc3b9",
+            "4507f0834bfc016f",
+            "9b1cea20716d203a",
+            "fea20808ada5deaa",
+            "f426a97aef9c57cf"
+          ]
+        },
+        {
+          "tag": "outcome",
+          "values": [
+            "success"
+          ]
+        }
+      ]
+    },
+    "payflow.db.commit": {
+      "name": "payflow.db.commit",
+      "baseUnit": "seconds",
+      "measurements": [
+        {
+          "statistic": "COUNT",
+          "value": 12746.0
+        },
+        {
+          "statistic": "TOTAL_TIME",
+          "value": 28.662299637
+        },
+        {
+          "statistic": "MAX",
+          "value": 0.139174199
+        }
+      ],
+      "availableTags": [
+        {
+          "tag": "statement",
+          "values": [
+            "all"
+          ]
+        },
+        {
+          "tag": "outcome",
+          "values": [
+            "success"
+          ]
+        }
+      ]
+    },
+    "payflow.db.rollback": {
+      "name": "payflow.db.rollback",
+      "baseUnit": "seconds",
+      "measurements": [
+        {
+          "statistic": "COUNT",
+          "value": 2.0
+        },
+        {
+          "statistic": "TOTAL_TIME",
+          "value": 0.000535717
+        },
+        {
+          "statistic": "MAX",
+          "value": 0.000356503
+        }
+      ],
+      "availableTags": [
+        {
+          "tag": "statement",
+          "values": [
+            "all"
+          ]
+        },
+        {
+          "tag": "outcome",
+          "values": [
+            "success"
+          ]
+        }
+      ]
+    },
+    "hikaricp.connections.active": {
+      "name": "hikaricp.connections.active",
+      "description": "Active connections",
+      "measurements": [
+        {
+          "statistic": "VALUE",
+          "value": 3.0
+        }
+      ],
+      "availableTags": [
+        {
+          "tag": "pool",
+          "values": [
+            "HikariPool-1"
+          ]
+        }
+      ]
+    },
+    "hikaricp.connections.pending": {
+      "name": "hikaricp.connections.pending",
+      "description": "Pending threads",
+      "measurements": [
+        {
+          "statistic": "VALUE",
+          "value": 0.0
+        }
+      ],
+      "availableTags": [
+        {
+          "tag": "pool",
+          "values": [
+            "HikariPool-1"
+          ]
+        }
+      ]
+    },
+    "process.cpu.usage": {
+      "name": "process.cpu.usage",
+      "description": "The \"recent cpu usage\" for the Java Virtual Machine process",
+      "measurements": [
+        {
+          "statistic": "VALUE",
+          "value": 0.6153846153846153
+        }
+      ],
+      "availableTags": []
+    },
+    "system.cpu.usage": {
+      "name": "system.cpu.usage",
+      "description": "The \"recent cpu usage\" of the system the application is running in",
+      "measurements": [
+        {
+          "statistic": "VALUE",
+          "value": 0.9673261150915956
+        }
+      ],
+      "availableTags": []
+    },
+    "http.server.requests": {
+      "name": "http.server.requests",
+      "baseUnit": "seconds",
+      "measurements": [
+        {
+          "statistic": "COUNT",
+          "value": 5578.0
+        },
+        {
+          "statistic": "TOTAL_TIME",
+          "value": 432.52543906200003
+        },
+        {
+          "statistic": "MAX",
+          "value": 0.905059107
+        }
+      ],
+      "availableTags": [
+        {
+          "tag": "exception",
+          "values": [
+            "none"
+          ]
+        },
+        {
+          "tag": "method",
+          "values": [
+            "POST",
+            "GET"
+          ]
+        },
+        {
+          "tag": "error",
+          "values": [
+            "none"
+          ]
+        },
+        {
+          "tag": "uri",
+          "values": [
+            "/v1/payments/{id}/refunds",
+            "/actuator/metrics/{requiredMetricName}",
+            "/v1/payments/{id}",
+            "/v1/ledger",
+            "/ops/status",
+            "/v1/payments",
+            "/auth/token",
+            "/simulator/merchant-webhook",
+            "/ops/profile/start",
+            "/ops/simulator/lose-next-response"
+          ]
+        },
+        {
+          "tag": "outcome",
+          "values": [
+            "CLIENT_ERROR",
+            "SUCCESS"
+          ]
+        },
+        {
+          "tag": "status",
+          "values": [
+            "200",
+            "202",
+            "409",
+            "403"
+          ]
+        }
+      ]
+    }
+  },
+  "status": {
+    "pendingOperations": 3049,
+    "pendingWebhooks": 19,
+    "unbalancedJournals": 0,
+    "unpublishedEvents": 10
+  },
+  "databaseWaits": [
+    {
+      "state": "active",
+      "wait_event_type": "LWLock",
+      "wait_event": "WALWrite",
+      "count": 1
+    },
+    {
+      "state": "active",
+      "wait_event_type": null,
+      "wait_event": null,
+      "count": 3
+    },
+    {
+      "state": "idle",
+      "wait_event_type": "Client",
+      "wait_event": "ClientRead",
+      "count": 5
+    },
+    {
+      "state": "idle in transaction",
+      "wait_event_type": "Client",
+      "wait_event": "ClientRead",
+      "count": 1
+    },
+    {
+      "state": "idle in transaction",
+      "wait_event_type": null,
+      "wait_event": null,
+      "count": 1
+    }
+  ]
+}

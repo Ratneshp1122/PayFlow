@@ -1,0 +1,8 @@
+{
+  "DB_POOL_SIZE": "10",
+  "PROFILE_ENABLED": "true",
+  "WORKER_CONCURRENCY": "4",
+  "WEBHOOK_CONCURRENCY": "4",
+  "OUTBOX_BATCH_SIZE": "128",
+  "LAZY_INIT": "false"
+}

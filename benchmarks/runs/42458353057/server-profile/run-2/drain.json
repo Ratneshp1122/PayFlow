@@ -1,0 +1,11 @@
+{
+  "seconds": 1.033601252000011,
+  "measurementScope": "polling begins after diagnostic collection; not time from load end",
+  "status": {
+    "pendingOperations": 0,
+    "pendingWebhooks": 0,
+    "unbalancedJournals": 0,
+    "unpublishedEvents": 0
+  },
+  "fullyDrained": true
+}

@@ -1,0 +1,6 @@
+{
+  "topology": "separate GitHub-hosted app and load runner via Cloudflare Quick Tunnel",
+  "clientLatencyIncludesRelay": true,
+  "relayInflightLimit": 200,
+  "publicIngress": "gateway allows only authenticated payment POSTs and bounded benchmark controls; app/ops ports stay loopback"
+}

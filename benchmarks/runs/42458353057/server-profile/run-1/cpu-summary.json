@@ -1,0 +1,421 @@
+{
+  "sampledTopFrames": [
+    [
+      "sun/nio/ch/EPoll.wait",
+      233
+    ],
+    [
+      "sun/nio/ch/Net.poll",
+      131
+    ],
+    [
+      "sun/nio/ch/SocketDispatcher.write0",
+      96
+    ],
+    [
+      "sun/nio/ch/Net.accept",
+      66
+    ],
+    [
+      "java/lang/Thread.yield0",
+      24
+    ],
+    [
+      "java/util/concurrent/ConcurrentHashMap.get",
+      12
+    ],
+    [
+      "sun/nio/ch/EventFD.set0",
+      10
+    ],
+    [
+      "sun/nio/ch/SocketDispatcher.read0",
+      10
+    ],
+    [
+      "java/util/HashMap.getNode",
+      9
+    ],
+    [
+      "sun/nio/ch/Net.shutdown",
+      6
+    ],
+    [
+      "sun/nio/ch/SocketDispatcher.writev0",
+      5
+    ],
+    [
+      "java/lang/invoke/DirectMethodHandle.allocateInstance",
+      5
+    ],
+    [
+      "java/lang/StringConcatHelper.simpleConcat",
+      5
+    ],
+    [
+      "java/util/HashMap.putVal",
+      4
+    ],
+    [
+      "java/nio/charset/Charset.decode",
+      3
+    ],
+    [
+      "org/springframework/web/servlet/mvc/method/annotation/ServletInvocableHandlerMethod.invokeAndHandle",
+      3
+    ],
+    [
+      "org/springframework/security/authorization/ObservationAuthorizationManager.check",
+      3
+    ],
+    [
+      "java/lang/String.checkIndex",
+      3
+    ],
+    [
+      "java/util/concurrent/ThreadPoolExecutor.runWorker",
+      3
+    ],
+    [
+      "java/util/HashMap.computeIfAbsent",
+      3
+    ],
+    [
+      "org/springframework/util/StringUtils.toStringArray",
+      2
+    ],
+    [
+      "java/util/AbstractList.hashCode",
+      2
+    ],
+    [
+      "org/springframework/web/servlet/mvc/method/annotation/AbstractMessageConverterMethodArgumentResolver.createInputMessage",
+      2
+    ],
+    [
+      "java/util/HashMap.hash",
+      2
+    ],
+    [
+      "java/lang/reflect/Method.invoke",
+      2
+    ],
+    [
+      "java/util/concurrent/ConcurrentHashMap$ValuesView.iterator",
+      2
+    ],
+    [
+      "sun/invoke/util/ValueConversions.unboxInteger",
+      2
+    ],
+    [
+      "org/springframework/web/servlet/mvc/method/annotation/AbstractMessageConverterMethodProcessor.writeWithMessageConverters",
+      2
+    ],
+    [
+      "ch/qos/logback/classic/LoggerContext.getTurboFilterChainDecision_0_3OrMore",
+      2
+    ],
+    [
+      "org/springframework/http/server/DefaultPathContainer.createFromUrlPath",
+      2
+    ]
+  ],
+  "topFramesByEventType": {
+    "jdk.NativeMethodSample": [
+      [
+        "sun/nio/ch/EPoll.wait",
+        233
+      ],
+      [
+        "sun/nio/ch/Net.poll",
+        131
+      ],
+      [
+        "sun/nio/ch/SocketDispatcher.write0",
+        96
+      ],
+      [
+        "sun/nio/ch/Net.accept",
+        66
+      ],
+      [
+        "java/lang/Thread.yield0",
+        24
+      ],
+      [
+        "sun/nio/ch/EventFD.set0",
+        10
+      ],
+      [
+        "sun/nio/ch/SocketDispatcher.read0",
+        10
+      ],
+      [
+        "sun/nio/ch/Net.shutdown",
+        6
+      ],
+      [
+        "sun/nio/ch/SocketDispatcher.writev0",
+        5
+      ],
+      [
+        "sun/nio/ch/EPoll.ctl",
+        1
+      ],
+      [
+        "java/lang/Class.isAssignableFrom",
+        1
+      ],
+      [
+        "java/lang/Object.getClass",
+        1
+      ],
+      [
+        "com/sun/management/internal/OperatingSystemImpl.getSingleCpuLoad0",
+        1
+      ],
+      [
+        "jdk/internal/misc/Unsafe.compareAndSetLong",
+        1
+      ],
+      [
+        "com/sun/management/internal/OperatingSystemImpl.getHostOnlineCpuCount0",
+        1
+      ]
+    ],
+    "jdk.ExecutionSample": [
+      [
+        "java/util/concurrent/ConcurrentHashMap.get",
+        12
+      ],
+      [
+        "java/util/HashMap.getNode",
+        9
+      ],
+      [
+        "java/lang/invoke/DirectMethodHandle.allocateInstance",
+        5
+      ],
+      [
+        "java/lang/StringConcatHelper.simpleConcat",
+        5
+      ],
+      [
+        "java/util/HashMap.putVal",
+        4
+      ],
+      [
+        "java/nio/charset/Charset.decode",
+        3
+      ],
+      [
+        "org/springframework/web/servlet/mvc/method/annotation/ServletInvocableHandlerMethod.invokeAndHandle",
+        3
+      ],
+      [
+        "org/springframework/security/authorization/ObservationAuthorizationManager.check",
+        3
+      ],
+      [
+        "java/lang/String.checkIndex",
+        3
+      ],
+      [
+        "java/util/concurrent/ThreadPoolExecutor.runWorker",
+        3
+      ],
+      [
+        "java/util/HashMap.computeIfAbsent",
+        3
+      ],
+      [
+        "org/springframework/util/StringUtils.toStringArray",
+        2
+      ],
+      [
+        "java/util/AbstractList.hashCode",
+        2
+      ],
+      [
+        "org/springframework/web/servlet/mvc/method/annotation/AbstractMessageConverterMethodArgumentResolver.createInputMessage",
+        2
+      ],
+      [
+        "java/util/HashMap.hash",
+        2
+      ],
+      [
+        "java/lang/reflect/Method.invoke",
+        2
+      ],
+      [
+        "java/util/concurrent/ConcurrentHashMap$ValuesView.iterator",
+        2
+      ],
+      [
+        "sun/invoke/util/ValueConversions.unboxInteger",
+        2
+      ],
+      [
+        "org/springframework/web/servlet/mvc/method/annotation/AbstractMessageConverterMethodProcessor.writeWithMessageConverters",
+        2
+      ],
+      [
+        "ch/qos/logback/classic/LoggerContext.getTurboFilterChainDecision_0_3OrMore",
+        2
+      ],
+      [
+        "org/springframework/http/server/DefaultPathContainer.createFromUrlPath",
+        2
+      ],
+      [
+        "org/springframework/web/servlet/mvc/method/annotation/RequestResponseBodyAdviceChain.processBody",
+        2
+      ],
+      [
+        "io/micrometer/core/instrument/MeterRegistry.getOrCreateMeter",
+        2
+      ],
+      [
+        "org/springframework/jdbc/core/JdbcTemplate.execute",
+        2
+      ],
+      [
+        "java/util/regex/Pattern$BmpCharPropertyGreedy.match",
+        2
+      ],
+      [
+        "org/springframework/util/ObjectUtils.nullSafeEquals",
+        2
+      ],
+      [
+        "java/net/Socket$SocketOutputStream.write",
+        2
+      ],
+      [
+        "org/apache/tomcat/util/buf/MessageBytes.recycle",
+        2
+      ],
+      [
+        "org/springframework/web/method/annotation/SessionAttributesHandler.retrieveAttributes",
+        2
+      ],
+      [
+        "java/util/concurrent/ConcurrentHashMap.putVal",
+        2
+      ]
+    ]
+  },
+  "cpuLoadSamples": [
+    {
+      "startTime": "2026-11-08T07:21:09.717546807Z",
+      "jvmUser": 0.0,
+      "jvmSystem": 0.0,
+      "machineTotal": 0.0
+    },
+    {
+      "startTime": "2026-11-08T07:21:10.722941906Z",
+      "jvmUser": 0.32330826,
+      "jvmSystem": 0.012531328,
+      "machineTotal": 0.505
+    },
+    {
+      "startTime": "2026-11-08T07:21:11.729240736Z",
+      "jvmUser": 0.52618456,
+      "jvmSystem": 0.054862842,
+      "machineTotal": 0.975
+    },
+    {
+      "startTime": "2026-11-08T07:21:12.800691745Z",
+      "jvmUser": 0.5375587,
+      "jvmSystem": 0.051643193,
+      "machineTotal": 0.90375584
+    },
+    {
+      "startTime": "2026-11-08T07:21:13.804882851Z",
+      "jvmUser": 0.515,
+      "jvmSystem": 0.06,
+      "machineTotal": 0.985
+    },
+    {
+      "startTime": "2026-11-08T07:21:14.846166380Z",
+      "jvmUser": 0.50240386,
+      "jvmSystem": 0.05528846,
+      "machineTotal": 0.99038464
+    },
+    {
+      "startTime": "2026-11-08T07:21:15.853929881Z",
+      "jvmUser": 0.46268657,
+      "jvmSystem": 0.05721393,
+      "machineTotal": 0.9900498
+    },
+    {
+      "startTime": "2026-11-08T07:21:16.856905561Z",
+      "jvmUser": 0.5187032,
+      "jvmSystem": 0.057356607,
+      "machineTotal": 0.9875312
+    },
+    {
+      "startTime": "2026-11-08T07:21:17.882575077Z",
+      "jvmUser": 0.46454766,
+      "jvmSystem": 0.056234717,
+      "machineTotal": 0.99022007
+    },
+    {
+      "startTime": "2026-11-08T07:21:18.919716574Z",
+      "jvmUser": 0.5325301,
+      "jvmSystem": 0.062650606,
+      "machineTotal": 0.9927711
+    },
+    {
+      "startTime": "2026-11-08T07:21:19.964296700Z",
+      "jvmUser": 0.470024,
+      "jvmSystem": 0.05995204,
+      "machineTotal": 0.99040765
+    },
+    {
+      "startTime": "2026-11-08T07:21:20.974104822Z",
+      "jvmUser": 0.455,
+      "jvmSystem": 0.07,
+      "machineTotal": 0.9875
+    },
+    {
+      "startTime": "2026-11-08T07:21:21.984095434Z",
+      "jvmUser": 0.43564355,
+      "jvmSystem": 0.06930693,
+      "machineTotal": 0.98762375
+    },
+    {
+      "startTime": "2026-11-08T07:21:23.004253502Z",
+      "jvmUser": 0.42751843,
+      "jvmSystem": 0.06879607,
+      "machineTotal": 0.99017197
+    },
+    {
+      "startTime": "2026-11-08T07:21:24.016300957Z",
+      "jvmUser": 0.44168735,
+      "jvmSystem": 0.074441686,
+      "machineTotal": 0.9801489
+    },
+    {
+      "startTime": "2026-11-08T07:21:25.055007367Z",
+      "jvmUser": 0.41445783,
+      "jvmSystem": 0.0746988,
+      "machineTotal": 0.99036145
+    },
+    {
+      "startTime": "2026-11-08T07:21:26.061927229Z",
+      "jvmUser": 0.5425,
+      "jvmSystem": 0.0575,
+      "machineTotal": 0.98
+    },
+    {
+      "startTime": "2026-11-08T07:21:27.069249908Z",
+      "jvmUser": 0.535,
+      "jvmSystem": 0.055,
+      "machineTotal": 0.9675
+    }
+  ],
+  "interpretation": "stack sample frequency, not wall-time percentage; native stacks can include waiting"
+}
