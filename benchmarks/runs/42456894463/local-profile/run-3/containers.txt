@@ -1,0 +1,5 @@
+CONTAINER ID   NAME                 CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O     PIDS
+a421340979e2   payflow-app-1        24.02%    396.1MiB / 768MiB     51.57%    62.1MB / 71.7MB   0B / 3.58MB   84
+0f9ee776e959   payflow-postgres-1   33.09%    94.96MiB / 15.61GiB   0.59%     53.1MB / 44.5MB   0B / 840MB    16
+4e7fe325a218   payflow-kafka-1      27.18%    403.5MiB / 15.61GiB   2.52%     9.95MB / 8.34MB   0B / 7.86MB   100
+4ddeaa684fd9   payflow-redis-1      0.28%     4.004MiB / 15.61GiB   0.03%     2.31MB / 954kB    0B / 4.1kB    6
