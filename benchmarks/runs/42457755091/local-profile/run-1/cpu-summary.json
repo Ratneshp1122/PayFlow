@@ -1,0 +1,229 @@
+{
+  "sampledTopFrames": [
+    [
+      "sun/nio/ch/EPoll.wait",
+      419
+    ],
+    [
+      "sun/nio/ch/Net.poll",
+      189
+    ],
+    [
+      "sun/nio/ch/Net.accept",
+      99
+    ],
+    [
+      "sun/nio/ch/SocketDispatcher.write0",
+      82
+    ],
+    [
+      "sun/nio/ch/EventFD.set0",
+      17
+    ],
+    [
+      "sun/nio/ch/SocketDispatcher.writev0",
+      7
+    ],
+    [
+      "java/util/concurrent/ConcurrentHashMap.get",
+      5
+    ],
+    [
+      "sun/nio/ch/SocketDispatcher.read0",
+      4
+    ],
+    [
+      "java/lang/Thread.yield0",
+      3
+    ],
+    [
+      "io/micrometer/core/instrument/Tags.hashCode",
+      3
+    ],
+    [
+      "org/springframework/context/i18n/LocaleContextHolder.setLocaleContext",
+      2
+    ],
+    [
+      "org/apache/catalina/connector/CoyoteAdapter.postParseRequest",
+      2
+    ],
+    [
+      "org/apache/catalina/core/StandardHostValve.invoke",
+      2
+    ],
+    [
+      "org/apache/catalina/core/StandardContext.bind",
+      2
+    ],
+    [
+      "java/lang/Class.getComponentType",
+      2
+    ],
+    [
+      "com/fasterxml/jackson/databind/deser/std/BaseNodeDeserializer._deserializeContainerNoRecursion",
+      2
+    ],
+    [
+      "java/util/regex/Pattern$BmpCharPropertyGreedy.match",
+      2
+    ],
+    [
+      "org/apache/coyote/http11/Http11OutputBuffer.write",
+      2
+    ],
+    [
+      "org/postgresql/core/VisibleBufferedInputStream.readMore",
+      2
+    ],
+    [
+      "java/util/ComparableTimSort.countRunAndMakeAscending",
+      2
+    ],
+    [
+      "java/util/regex/Pattern.closure",
+      2
+    ],
+    [
+      "java/util/concurrent/atomic/LongAdder.add",
+      2
+    ],
+    [
+      "java/lang/ThreadLocal$ThreadLocalMap.getEntry",
+      2
+    ],
+    [
+      "org/springframework/web/servlet/mvc/method/annotation/RequestMappingHandlerAdapter.handleInternal",
+      1
+    ],
+    [
+      "java/util/regex/Matcher.getSubSequence",
+      1
+    ],
+    [
+      "com/fasterxml/jackson/core/sym/ByteQuadsCanonicalizer.maybeDirty",
+      1
+    ],
+    [
+      "org/springframework/web/servlet/DispatcherServlet.getHandler",
+      1
+    ],
+    [
+      "java/lang/CharacterData00.getType",
+      1
+    ],
+    [
+      "org.springframework.security.web.access.intercept.AuthorizationFilter$$Lambda/0x00007f0dde8e2490.get",
+      1
+    ],
+    [
+      "java/util/Spliterators$IteratorSpliterator.estimateSize",
+      1
+    ]
+  ],
+  "cpuLoadSamples": [
+    {
+      "startTime": "2026-11-08T07:12:21.141969338Z",
+      "jvmUser": 0.0,
+      "jvmSystem": 0.0,
+      "machineTotal": 0.0
+    },
+    {
+      "startTime": "2026-11-08T07:12:22.142594729Z",
+      "jvmUser": 0.3172589,
+      "jvmSystem": 0.007614213,
+      "machineTotal": 0.51522845
+    },
+    {
+      "startTime": "2026-11-08T07:12:23.144077308Z",
+      "jvmUser": 0.53807104,
+      "jvmSystem": 0.05076142,
+      "machineTotal": 0.9213198
+    },
+    {
+      "startTime": "2026-11-08T07:12:24.150027891Z",
+      "jvmUser": 0.6044776,
+      "jvmSystem": 0.06716418,
+      "machineTotal": 0.9726368
+    },
+    {
+      "startTime": "2026-11-08T07:12:25.155584332Z",
+      "jvmUser": 0.57537687,
+      "jvmSystem": 0.05276382,
+      "machineTotal": 0.9748744
+    },
+    {
+      "startTime": "2026-11-08T07:12:26.158729496Z",
+      "jvmUser": 0.56390977,
+      "jvmSystem": 0.060150377,
+      "machineTotal": 0.9699248
+    },
+    {
+      "startTime": "2026-11-08T07:12:27.159775750Z",
+      "jvmUser": 0.5768262,
+      "jvmSystem": 0.057934508,
+      "machineTotal": 0.9647355
+    },
+    {
+      "startTime": "2026-11-08T07:12:28.162807555Z",
+      "jvmUser": 0.51378447,
+      "jvmSystem": 0.05764411,
+      "machineTotal": 0.8446115
+    },
+    {
+      "startTime": "2026-11-08T07:12:29.163696568Z",
+      "jvmUser": 0.5150754,
+      "jvmSystem": 0.06281407,
+      "machineTotal": 0.959799
+    },
+    {
+      "startTime": "2026-11-08T07:12:30.166440654Z",
+      "jvmUser": 0.4848485,
+      "jvmSystem": 0.053030305,
+      "machineTotal": 0.9469697
+    },
+    {
+      "startTime": "2026-11-08T07:12:31.169869758Z",
+      "jvmUser": 0.48101267,
+      "jvmSystem": 0.06582279,
+      "machineTotal": 0.921519
+    },
+    {
+      "startTime": "2026-11-08T07:12:32.176019652Z",
+      "jvmUser": 0.36317137,
+      "jvmSystem": 0.061381076,
+      "machineTotal": 0.7007673
+    },
+    {
+      "startTime": "2026-11-08T07:12:33.176593220Z",
+      "jvmUser": 0.2974359,
+      "jvmSystem": 0.071794875,
+      "machineTotal": 0.7205128
+    },
+    {
+      "startTime": "2026-11-08T07:12:34.177376034Z",
+      "jvmUser": 0.37532133,
+      "jvmSystem": 0.06169666,
+      "machineTotal": 0.7840617
+    },
+    {
+      "startTime": "2026-11-08T07:12:35.178463709Z",
+      "jvmUser": 0.35732648,
+      "jvmSystem": 0.059125964,
+      "machineTotal": 0.7442455
+    },
+    {
+      "startTime": "2026-11-08T07:12:36.183695061Z",
+      "jvmUser": 0.4886076,
+      "jvmSystem": 0.060759492,
+      "machineTotal": 0.8982188
+    },
+    {
+      "startTime": "2026-11-08T07:12:37.184880440Z",
+      "jvmUser": 0.3918575,
+      "jvmSystem": 0.06361323,
+      "machineTotal": 0.7684478
+    }
+  ],
+  "interpretation": "stack sample frequency, not wall-time percentage"
+}
