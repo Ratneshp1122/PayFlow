@@ -1,0 +1,47 @@
+name: Three-run local profiling
+on:
+  workflow_dispatch:
+    inputs:
+      rate: {description: Offered RPS, default: '300', required: true}
+      seconds: {description: Seconds per trial, default: '15', required: true}
+permissions: {contents: read}
+jobs:
+  measure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with: {distribution: temurin, java-version: '21'}
+      - name: Validate bounded workload
+        env: {RATE: '${{ inputs.rate }}', SECONDS_REQUESTED: '${{ inputs.seconds }}'}
+        run: python3 -c 'import os; assert 1<=int(os.environ["RATE"])<=1200; assert 1<=int(os.environ["SECONDS_REQUESTED"])<=60'
+      - run: docker compose -f compose.yml -f compose.profile.yml up -d --build
+      - run: python3 scripts/smoke.py
+      - name: Profile three complete trials
+        env: {RATE: '${{ inputs.rate }}', DURATION: '${{ inputs.seconds }}s'}
+        run: python3 benchmarks/profile.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: {name: local-profile, path: evidence/}
+      - run: docker compose down
+        if: always()
+  archive:
+    needs: measure
+    if: always()
+    runs-on: ubuntu-latest
+    permissions: {contents: write, actions: read}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with: {path: 'benchmarks/runs/${{ github.run_id }}'}
+      - name: Save every trial, including failed thresholds
+        env: {RUN_ID: '${{ github.run_id }}'}
+        run: |
+          python3 benchmarks/report.py
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add benchmarks/runs
+          git commit -m "Record profiling run $RUN_ID [skip ci]"
+          for attempt in 1 2 3; do git pull --rebase origin main && git push && exit 0; sleep 2; done
+          exit 1

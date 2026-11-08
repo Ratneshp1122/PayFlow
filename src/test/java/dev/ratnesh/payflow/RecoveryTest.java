@@ -14,7 +14,7 @@ import org.testcontainers.junit.jupiter.*;
 
 @Tag("integration")
 @Testcontainers
-@SpringBootTest(properties = {"payflow.workers=false", "spring.kafka.listener.auto-startup=false"})
+@SpringBootTest(properties = {"payflow.workers=false", "spring.kafka.listener.auto-startup=false", "payflow.profiling=true"})
 class RecoveryTest {
   @Container
   static PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>("postgres:17.6-alpine");
